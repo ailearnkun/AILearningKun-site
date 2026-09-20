@@ -18,11 +18,10 @@ layout: layouts/base.njk
       {{ content | safe }}
     </div>
 
-    {% if tags %}
+    {# Topic tags only — `posts` is the internal collection tag, not a topic #}
     <div class="card__meta" style="margin-top:2.5rem">
-      {% for tag in tags %}<span class="tag">{{ tag }}</span>{% endfor %}
+      {% for tag in tags %}{% if tag != "posts" %}<span class="tag">{{ tag }}</span>{% endif %}{% endfor %}
     </div>
-    {% endif %}
 
     <p style="margin-top:2.5rem">
       <a href="{{ '/blog/' if (lang or 'id') == 'id' else '/en/blog/' }}">&larr; {{ t.blog.backToBlog }}</a>
