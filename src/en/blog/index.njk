@@ -6,13 +6,17 @@ intro: Notes on operations, automation, and the AI I use every day.
 permalink: "/en/blog/"
 altUrl: "/blog/"
 ---
+{% from "partials/icons.njk" import icon %}
 {% set t = i18n.en %}
 {% set posts = collections.posts | byLang('en') | newestFirst %}
 
 {% if posts.length %}
-<div class="grid grid--2">
+{% include "partials/blog-search.njk" %}
+
+<div class="grid grid--2" data-search-list>
   {% for post in posts %}
-  <a class="card card--link" href="{{ post.url }}">
+  <a class="card card--link" href="{{ post.url }}" data-search-item
+     data-search-text="{{ [post.data.title, post.data.description] | join(' ') | lower }}">
     <h3>{{ post.data.title }}</h3>
     <p>{{ post.data.description }}</p>
     <div class="card__meta">

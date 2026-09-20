@@ -6,6 +6,7 @@ altUrl: "/"
 title: ""
 description: "Kun — a property operations practitioner in Bali who builds AI systems to make operations more efficient, measurable, and consistent."
 ---
+{% from "partials/icons.njk" import icon %}
 {% set t = i18n.en %}
 
 <section class="hero">
@@ -14,8 +15,8 @@ description: "Kun — a property operations practitioner in Bali who builds AI s
     <h1>{{ t.home.heroTitle }}</h1>
     <p>{{ t.home.heroText }}</p>
     <div class="btn-row">
-      <a class="btn btn--primary" href="/en/contact/">{{ t.cta.primary }}</a>
-      <a class="btn btn--outline-light" href="/en/work/">{{ t.cta.secondary }}</a>
+      <a class="btn btn--primary" href="/en/contact/">{{ icon("send", 18) }} {{ t.cta.primary }}</a>
+      <a class="btn btn--outline-light" href="/en/work/">{{ t.cta.secondary }} {{ icon("arrow-right", 18) }}</a>
     </div>
   </div>
 </section>
@@ -26,7 +27,7 @@ description: "Kun — a property operations practitioner in Bali who builds AI s
     <div class="grid grid--3">
       {% for p in t.home.pillars %}
       <article class="card" data-reveal>
-        <div class="card__icon">{{ loop.index }}</div>
+        <div class="card__icon">{{ icon(p.icon, 22) }}</div>
         <h3>{{ p.title }}</h3>
         <p>{{ p.text }}</p>
       </article>
@@ -54,7 +55,7 @@ description: "Kun — a property operations practitioner in Bali who builds AI s
         {% endif %}
       {% endfor %}
     </div>
-    <p style="margin-top:2rem"><a href="/en/work/">{{ t.home.allWork }} &rarr;</a></p>
+    <p class="mt-2"><a href="/en/work/">{{ t.home.allWork }} {{ icon("arrow-right", 16) }}</a></p>
   </div>
 </section>
 
@@ -72,7 +73,7 @@ description: "Kun — a property operations practitioner in Bali who builds AI s
       </a>
       {% endfor %}
     </div>
-    <p style="margin-top:2rem"><a href="/en/blog/">{{ t.home.allPosts }} &rarr;</a></p>
+    <p class="mt-2"><a href="/en/blog/">{{ t.home.allPosts }} {{ icon("arrow-right", 16) }}</a></p>
     {% else %}
     <p class="muted">{{ t.blog.empty }}</p>
     {% endif %}
@@ -86,8 +87,8 @@ description: "Kun — a property operations practitioner in Bali who builds AI s
       <p>{{ t.home.aboutText }}</p>
     </div>
     <div class="btn-row" data-reveal>
-      <a class="btn btn--light" href="/en/contact/">{{ t.cta.primary }}</a>
-      <a class="btn btn--outline-light" href="/en/about/">{{ t.nav.about }}</a>
+      <a class="btn btn--light" href="/en/contact/">{{ icon("send", 18) }} {{ t.cta.primary }}</a>
+      <a class="btn btn--outline-light" href="/en/about/">{{ t.nav.about }} {{ icon("arrow-right", 18) }}</a>
     </div>
   </div>
 </section>

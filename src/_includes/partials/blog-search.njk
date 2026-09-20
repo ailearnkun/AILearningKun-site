@@ -1,0 +1,22 @@
+{#
+  Blog search box.
+  Expects: `t` (i18n table for the current language).
+  Filters the client-side list rendered by blog/index.njk from
+  `collections.posts` — no index file, no network request.
+#}
+{% from "partials/icons.njk" import icon %}
+<div class="search" role="search" data-blog-search
+     data-msg-none="{{ t.blog.searchNoResults }}"
+     data-msg-one="{{ t.blog.searchResultsOne }}"
+     data-msg-many="{{ t.blog.searchResultsMany }}">
+  <label class="search__field">
+    {{ icon("search", 18) }}
+    <input type="search" class="search__input" placeholder="{{ t.blog.searchPlaceholder }}"
+           aria-label="{{ t.blog.searchLabel }}" autocomplete="off" />
+    <button type="button" class="search__clear" aria-label="{{ t.blog.searchClear }}" hidden>
+      {{ icon("close", 16) }}
+    </button>
+  </label>
+  <p class="search__status" role="status" aria-live="polite" hidden></p>
+  <p class="search__empty" hidden>{{ t.blog.searchNoResults }} &hellip;</p>
+</div>

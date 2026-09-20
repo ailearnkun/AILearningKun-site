@@ -6,6 +6,7 @@ intro: Tiga cara saya bisa membantu — semuanya berangkat dari pengalaman opera
 permalink: "/layanan/"
 altUrl: "/en/services/"
 ---
+{% from "partials/icons.njk" import icon %}
 {% set t = i18n.id %}
 <div class="grid grid--3">
   {% for s in services %}
@@ -13,15 +14,15 @@ altUrl: "/en/services/"
     <div class="card__icon">{{ loop.index }}</div>
     <h3>{{ s.title.id }}</h3>
     <p>{{ s.summary.id }}</p>
-    <div class="card__meta"><span class="tag">Selengkapnya &rarr;</span></div>
+    <div class="card__meta"><span class="tag">Selengkapnya {{ icon("arrow-right", 13) }}</span></div>
   </a>
   {% endfor %}
 </div>
 
-<div class="section-head" style="margin-top:3.5rem">
+<div class="section-head mt-4">
   <h2>{{ t.services.ctaTitle }}</h2>
   <p>{{ t.services.ctaText }}</p>
-  <div class="btn-row" style="margin-top:1.25rem">
+  <div class="btn-row mt-6">
     <a class="btn btn--primary" href="/kontak/">{{ t.cta.consult }}</a>
   </div>
 </div>

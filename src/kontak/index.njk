@@ -6,6 +6,7 @@ permalink: "/kontak/"
 altUrl: "/en/contact/"
 description: "Kirim pesan — saya biasanya membalas dalam 1×24 jam."
 ---
+{% from "partials/icons.njk" import icon %}
 {% set t = i18n.id %}
 
 <header class="page-head">
@@ -23,7 +24,7 @@ description: "Kirim pesan — saya biasanya membalas dalam 1×24 jam."
       <div>
         <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/terima-kasih/">
           <input type="hidden" name="form-name" value="contact" />
-          <p style="display:none">
+          <p class="is-hidden">
             <label>Jangan diisi: <input name="bot-field" /></label>
           </p>
 
@@ -42,7 +43,7 @@ description: "Kirim pesan — saya biasanya membalas dalam 1×24 jam."
             <textarea id="message" name="message" required></textarea>
           </div>
 
-          <button class="btn btn--primary" type="submit">{{ t.contact.formSubmit }}</button>
+          <button class="btn btn--primary" type="submit">{{ icon("send", 18) }} {{ t.contact.formSubmit }}</button>
           <p class="form-note">{{ t.contact.formNote }}</p>
         </form>
       </div>
@@ -50,23 +51,23 @@ description: "Kirim pesan — saya biasanya membalas dalam 1×24 jam."
       <!-- DETAILS -->
       <div>
         <div class="contact-card">
-          <dl style="margin:0">
+          <dl class="m-0">
             <div class="contact-item">
-              <dt>{{ t.contact.emailLabel }}</dt>
+              <dt>{{ icon("mail", 15) }} {{ t.contact.emailLabel }}</dt>
               <dd><a href="mailto:{{ site.email }}">{{ site.email }}</a></dd>
             </div>
             {% if site.whatsapp %}
             <div class="contact-item">
-              <dt>{{ t.contact.whatsappLabel }}</dt>
+              <dt>{{ icon("whatsapp", 15) }} {{ t.contact.whatsappLabel }}</dt>
               <dd><a href="https://wa.me/{{ site.whatsapp }}" target="_blank" rel="noopener">Chat via WhatsApp</a></dd>
             </div>
             {% endif %}
             <div class="contact-item">
-              <dt>{{ t.contact.locationLabel }}</dt>
+              <dt>{{ icon("location", 15) }} {{ t.contact.locationLabel }}</dt>
               <dd>{{ site.location }}</dd>
             </div>
             <div class="contact-item">
-              <dt>{{ t.contact.responseTime }}</dt>
+              <dt>{{ icon("clock", 15) }} {{ t.contact.responseTime }}</dt>
               <dd>{{ t.contact.responseValue }}</dd>
             </div>
           </dl>

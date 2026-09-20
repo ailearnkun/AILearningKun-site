@@ -11,11 +11,12 @@ eleventyComputed:
   description: "{{ service.summary.en }}"
   altUrl: "/layanan/{{ service.slug }}/"
 ---
+{% from "partials/icons.njk" import icon %}
 {% set t = i18n.en %}
 
 <header class="page-head">
   <div class="wrap">
-    <p style="color:#5b93ff;font-weight:600;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.75rem">{{ t.nav.services }}</p>
+    <p class="eyebrow">{{ t.nav.services }}</p>
     <h1>{{ service.title.en }}</h1>
     <p>{{ service.summary.en }}</p>
   </div>
@@ -34,27 +35,27 @@ eleventyComputed:
       </div>
     </div>
 
-    <div style="margin-top:3rem">
+    <div class="mt-3">
       <h2>{{ t.services.approach }}</h2>
       <ul class="prose">
         {% for step in service.approach.en %}<li>{{ step }}</li>{% endfor %}
       </ul>
     </div>
 
-    <div class="card" style="margin-top:3rem">
+    <div class="card mt-3">
       <h3>{{ t.services.start }}</h3>
       <p>{{ service.start.en }}</p>
-      <div class="btn-row" style="margin-top:1.25rem">
+      <div class="btn-row mt-6">
         <a class="btn btn--primary" href="/en/contact/">{{ t.cta.primary }}</a>
       </div>
     </div>
 
     {% if service.stack %}
-    <div class="card__meta" style="margin-top:2rem">
+    <div class="card__meta mt-2">
       {% for s in service.stack %}<span class="tag">{{ s }}</span>{% endfor %}
     </div>
     {% endif %}
 
-    <p style="margin-top:2.5rem"><a href="/en/services/">&larr; {{ t.nav.services }}</a></p>
+    <p class="mt-5"><a href="/en/services/">{{ icon("arrow-left", 16) }} {{ t.nav.services }}</a></p>
   </div>
 </section>

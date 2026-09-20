@@ -6,6 +6,7 @@ intro: Three ways I can help — all grounded in real operational experience, no
 permalink: "/en/services/"
 altUrl: "/layanan/"
 ---
+{% from "partials/icons.njk" import icon %}
 {% set t = i18n.en %}
 <div class="grid grid--3">
   {% for s in services %}
@@ -13,15 +14,15 @@ altUrl: "/layanan/"
     <div class="card__icon">{{ loop.index }}</div>
     <h3>{{ s.title.en }}</h3>
     <p>{{ s.summary.en }}</p>
-    <div class="card__meta"><span class="tag">Read more &rarr;</span></div>
+    <div class="card__meta"><span class="tag">Read more {{ icon("arrow-right", 13) }}</span></div>
   </a>
   {% endfor %}
 </div>
 
-<div class="section-head" style="margin-top:3.5rem">
+<div class="section-head mt-4">
   <h2>{{ t.services.ctaTitle }}</h2>
   <p>{{ t.services.ctaText }}</p>
-  <div class="btn-row" style="margin-top:1.25rem">
+  <div class="btn-row mt-6">
     <a class="btn btn--primary" href="/en/contact/">{{ t.cta.consult }}</a>
   </div>
 </div>

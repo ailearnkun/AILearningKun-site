@@ -5,17 +5,17 @@
   "description": "AI Learn Kun — operations optimization powered by self-built AI systems",
   "license": "MIT",
   "scripts": {
-    "build": "eleventy",
+    "build": "npm run clean && NODE_ENV=production eleventy",
+    "build:dev": "npm run clean && eleventy",
     "serve": "eleventy --serve --port=8080",
     "clean": "rm -rf _site",
     "test:build": "npm run build && node scripts/check-build.mjs",
-    "deploy:preview": "npx netlify deploy --dir=_site",
+    "size": "node scripts/report-size.mjs",
+    "deploy:preview": "npx netlify deploy --dir=_site --site=e91e241e-13d2-4326-a48d-fc86da5d4bcf",
     "deploy:prod": "npx netlify deploy --prod --dir=_site --site=e91e241e-13d2-4326-a48d-fc86da5d4bcf"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^3.1.6"
-  },
-  "dependencies": {
-    "@materializecss/materialize": "^2.3.3"
+    "@11ty/eleventy": "^3.1.6",
+    "html-minifier-terser": "^7.2.0"
   }
 }

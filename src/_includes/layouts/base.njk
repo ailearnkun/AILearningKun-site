@@ -29,11 +29,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
-  {# Styles: Materialize + custom theme #}
-  <link rel="stylesheet" href="/assets/vendor/materialize.min.css" />
+  {# Styles: single custom stylesheet (no framework payload) #}
   <link rel="stylesheet" href="/assets/css/style.css" />
 
   <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml" />
+  <meta name="theme-color" content="#0a192f" />
 </head>
 <body>
   <a class="skip-link" href="#main">{{ 'Lewati ke konten' if (lang or 'id') == 'id' else 'Skip to content' }}</a>

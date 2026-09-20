@@ -28,21 +28,21 @@ description: "A property operations practitioner in Bali who builds his own AI s
       </div>
     </div>
 
-    <div style="margin-top:3.5rem">
+    <div class="mt-4">
       <h2>{{ t.about.skillsTitle }}</h2>
       <div class="grid grid--2">
         {% for skill in t.about.skills %}
-        <div class="card" style="padding:1.1rem 1.3rem">
-          <p class="mb-0" style="color:var(--slate-700);font-weight:500">{{ skill }}</p>
+        <div class="card pad-card">
+          <p class="mb-0 text-strong">{{ skill }}</p>
         </div>
         {% endfor %}
       </div>
     </div>
 
-    <div class="card" style="margin-top:3.5rem">
+    <div class="card mt-4">
       <h3>{{ t.about.ctaTitle }}</h3>
       <p>{{ t.about.ctaText }}</p>
-      <div class="btn-row" style="margin-top:1.25rem">
+      <div class="btn-row mt-6">
         <a class="btn btn--primary" href="/en/contact/">{{ t.cta.primary }}</a>
       </div>
     </div>

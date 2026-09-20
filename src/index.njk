@@ -6,6 +6,7 @@ altUrl: "/en/"
 title: ""
 description: "Kun — praktisi operasional properti di Bali yang membangun sistem AI untuk membuat operasional berjalan lebih efisien, terukur, dan konsisten."
 ---
+{% from "partials/icons.njk" import icon %}
 {% set t = i18n.id %}
 
 <!-- HERO -->
@@ -15,8 +16,8 @@ description: "Kun — praktisi operasional properti di Bali yang membangun siste
     <h1>{{ t.home.heroTitle }}</h1>
     <p>{{ t.home.heroText }}</p>
     <div class="btn-row">
-      <a class="btn btn--primary" href="/kontak/">{{ t.cta.primary }}</a>
-      <a class="btn btn--outline-light" href="/proyek/">{{ t.cta.secondary }}</a>
+      <a class="btn btn--primary" href="/kontak/">{{ icon("send", 18) }} {{ t.cta.primary }}</a>
+      <a class="btn btn--outline-light" href="/proyek/">{{ t.cta.secondary }} {{ icon("arrow-right", 18) }}</a>
     </div>
   </div>
 </section>
@@ -30,7 +31,7 @@ description: "Kun — praktisi operasional properti di Bali yang membangun siste
     <div class="grid grid--3">
       {% for p in t.home.pillars %}
       <article class="card" data-reveal>
-        <div class="card__icon">{{ loop.index }}</div>
+        <div class="card__icon">{{ icon(p.icon, 22) }}</div>
         <h3>{{ p.title }}</h3>
         <p>{{ p.text }}</p>
       </article>
@@ -59,7 +60,7 @@ description: "Kun — praktisi operasional properti di Bali yang membangun siste
         {% endif %}
       {% endfor %}
     </div>
-    <p style="margin-top:2rem"><a href="/proyek/">{{ t.home.allWork }} &rarr;</a></p>
+    <p class="mt-2"><a href="/proyek/">{{ t.home.allWork }} {{ icon("arrow-right", 16) }}</a></p>
   </div>
 </section>
 
@@ -80,7 +81,7 @@ description: "Kun — praktisi operasional properti di Bali yang membangun siste
       </a>
       {% endfor %}
     </div>
-    <p style="margin-top:2rem"><a href="/blog/">{{ t.home.allPosts }} &rarr;</a></p>
+    <p class="mt-2"><a href="/blog/">{{ t.home.allPosts }} {{ icon("arrow-right", 16) }}</a></p>
     {% else %}
     <p class="muted">{{ t.blog.empty }}</p>
     {% endif %}
@@ -95,8 +96,8 @@ description: "Kun — praktisi operasional properti di Bali yang membangun siste
       <p>{{ t.home.aboutText }}</p>
     </div>
     <div class="btn-row" data-reveal>
-      <a class="btn btn--light" href="/kontak/">{{ t.cta.primary }}</a>
-      <a class="btn btn--outline-light" href="/tentang/">{{ t.nav.about }}</a>
+      <a class="btn btn--light" href="/kontak/">{{ icon("send", 18) }} {{ t.cta.primary }}</a>
+      <a class="btn btn--outline-light" href="/tentang/">{{ t.nav.about }} {{ icon("arrow-right", 18) }}</a>
     </div>
   </div>
 </section>

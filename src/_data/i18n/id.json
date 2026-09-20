@@ -23,14 +23,17 @@
     "pillarsTitle": "Apa yang saya kerjakan",
     "pillars": [
       {
+        "icon": "settings",
         "title": "Optimasi Operasional",
         "text": "Menata alur kerja, SOP, dan monitoring supaya operasional harian tidak bergantung pada ingatan orang."
       },
       {
+        "icon": "chart",
         "title": "Otomasi & Pelaporan",
         "text": "Menghubungkan tools yang sudah dipakai dan mengotomasi pekerjaan berulang — laporan datang sendiri, bukan diminta."
       },
       {
+        "icon": "cpu",
         "title": "Sistem AI Kustom",
         "text": "Membangun asisten dan agen AI yang menangani tugas nyata: mencatat, memantau, merangkum, dan mengingatkan."
       }
@@ -70,7 +73,14 @@
     "minRead": "menit baca",
     "allTags": "Semua topik",
     "empty": "Belum ada tulisan.",
-    "backToBlog": "Kembali ke blog"
+    "backToBlog": "Kembali ke blog",
+    "searchLabel": "Cari tulisan",
+    "searchPlaceholder": "Cari berdasarkan judul, topik, atau kata kunci...",
+    "searchNoResults": "Tidak ada tulisan yang cocok dengan",
+    "searchResultsOne": "1 tulisan ditemukan",
+    "searchResultsMany": "tulisan ditemukan",
+    "searchClear": "Hapus pencarian",
+    "searchHint": "Tekan Esc untuk menghapus"
   },
   "about": {
     "title": "Tentang",

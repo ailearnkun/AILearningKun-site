@@ -92,9 +92,62 @@ for (const required of ["/", "/en/", "/layanan/", "/en/services/", "/proyek/", "
   if (!pages.includes(required)) failures.push(`missing expected page: ${required}`);
 }
 
+// ---------------------------------------------------------------------------
+// Static security / hygiene assertions.
+// These mirror the Content-Security-Policy in netlify.toml: if a template ever
+// reintroduces an inline style or script, the deploy gate fails instead of the
+// policy silently breaking the page in production.
+// ---------------------------------------------------------------------------
+const SECRET_PATTERNS = [
+  /AIza[0-9A-Za-z_-]{35}/,            // Google API key
+  /sk-[A-Za-z0-9]{20,}/,              // OpenAI-style key
+  /\b\d{9,10}:AA[A-Za-z0-9_-]{33}\b/, // Telegram bot token
+  /BEGIN [A-Z ]*PRIVATE KEY/,
+  /(?:api[_-]?key|secret|password)\s*[:=]\s*["'][^"']{8,}/i,
+];
+
+let inlineStyles = 0;
+let inlineScripts = 0;
+let unsafeBlank = 0;
+
+for (const page of pages) {
+  const html = await readFile(join(root, page.slice(1), "index.html"), "utf8");
+
+  // style="" attributes break `style-src 'self'` — all presentation must be in CSS.
+  inlineStyles += (html.match(/\sstyle="/g) || []).length;
+
+  // <script> with a body breaks `script-src 'self'` without a nonce/hash.
+  inlineScripts += (html.match(/<script(?![^>]*\ssrc=)[^>]*>[\s\S]*?<\/script>/g) || []).length;
+
+  // target="_blank" without rel=noopener is a reverse-tabnabbing vector.
+  for (const tag of html.matchAll(/<a\b[^>]*target="_blank"[^>]*>/g)) {
+    if (!/rel="[^"]*noopener/.test(tag[0])) unsafeBlank++;
+  }
+
+  for (const pattern of SECRET_PATTERNS) {
+    const hit = html.match(pattern);
+    if (hit) failures.push(`possible secret in ${page}: ${String(hit[0]).slice(0, 24)}…`);
+  }
+
+  // The contact form must keep its honeypot, or spam filtering is lost.
+  if (page === "/kontak/" || page === "/en/contact/") {
+    if (!/bot-field/.test(html)) failures.push(`honeypot field missing on ${page}`);
+    if (!/data-netlify="true"/.test(html)) failures.push(`netlify form attribute missing on ${page}`);
+  }
+}
+
+if (inlineStyles) failures.push(`${inlineStyles} inline style attribute(s) — breaks style-src 'self'`);
+if (inlineScripts) failures.push(`${inlineScripts} inline <script> block(s) — breaks script-src 'self'`);
+if (unsafeBlank) failures.push(`${unsafeBlank} target="_blank" link(s) without rel="noopener"`);
+
+// Materialize is a design reference only; nothing may load it at runtime.
+const vendorRefs = files.filter((f) => f.includes("/vendor/"));
+if (vendorRefs.length) failures.push(`${vendorRefs.length} vendored framework file(s) still shipped`);
+
 server.close();
 
-console.log(`\nPages: ${pages.length}  |  Internal links checked: ${checkedLinks.size}\n`);
+console.log(`\nPages: ${pages.length}  |  Internal links checked: ${checkedLinks.size}`);
+console.log(`Inline styles: ${inlineStyles}  |  Inline scripts: ${inlineScripts}  |  Vendored framework files: ${vendorRefs.length}\n`);
 
 if (failures.length) {
   console.error(`✗ ${failures.length} problem(s):`);
@@ -103,4 +156,6 @@ if (failures.length) {
 }
 
 console.log("✓ All pages and internal links resolve (HTTP 200).");
-console.log(`✓ Language trees complete (id + en).`);
+console.log("✓ Language trees complete (id + en).");
+console.log("✓ CSP-compatible (no inline styles or scripts).");
+console.log("✓ No secrets, no unguarded target=\"_blank\", forms intact.");

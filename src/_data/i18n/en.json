@@ -23,14 +23,17 @@
     "pillarsTitle": "What I do",
     "pillars": [
       {
+        "icon": "settings",
         "title": "Operations Optimization",
         "text": "Structuring workflows, SOPs, and monitoring so daily operations don't depend on someone's memory."
       },
       {
+        "icon": "chart",
         "title": "Automation & Reporting",
         "text": "Connecting the tools you already use and automating repetitive work — reports come to you, not the other way around."
       },
       {
+        "icon": "cpu",
         "title": "Custom AI Systems",
         "text": "Building assistants and AI agents that handle real work: recording, monitoring, summarizing, and reminding."
       }
@@ -70,7 +73,14 @@
     "minRead": "min read",
     "allTags": "All topics",
     "empty": "No posts yet.",
-    "backToBlog": "Back to blog"
+    "backToBlog": "Back to blog",
+    "searchLabel": "Search posts",
+    "searchPlaceholder": "Search by title, topic, or keyword...",
+    "searchNoResults": "No posts match",
+    "searchResultsOne": "1 post found",
+    "searchResultsMany": "posts found",
+    "searchClear": "Clear search",
+    "searchHint": "Press Esc to clear"
   },
   "about": {
     "title": "About",

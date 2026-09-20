@@ -1,11 +1,12 @@
 ---
 layout: layouts/base.njk
 ---
+{% from "partials/icons.njk" import icon %}
 {% set t = i18n[lang or 'id'] %}
 <header class="page-head">
   <div class="wrap">
     <h1>{{ title }}</h1>
-    <div class="post-meta" style="color:#a9bede;margin-top:1rem;margin-bottom:0">
+    <div class="post-meta on-navy">
       <time datetime="{{ date | isoDate }}">{{ date | readableDate(lang) }}</time>
       {% if readTime %}<span>·</span><span>{{ readTime }} {{ t.blog.minRead }}</span>{% endif %}
     </div>
@@ -19,12 +20,12 @@ layout: layouts/base.njk
     </div>
 
     {# Topic tags only — `posts` is the internal collection tag, not a topic #}
-    <div class="card__meta" style="margin-top:2.5rem">
+    <div class="card__meta mt-5">
       {% for tag in tags %}{% if tag != "posts" %}<span class="tag">{{ tag }}</span>{% endif %}{% endfor %}
     </div>
 
-    <p style="margin-top:2.5rem">
-      <a href="{{ '/blog/' if (lang or 'id') == 'id' else '/en/blog/' }}">&larr; {{ t.blog.backToBlog }}</a>
+    <p class="mt-5">
+      <a href="{{ '/blog/' if (lang or 'id') == 'id' else '/en/blog/' }}">{{ icon("arrow-left", 16) }} {{ t.blog.backToBlog }}</a>
     </p>
   </div>
 </article>

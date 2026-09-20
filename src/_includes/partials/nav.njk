@@ -1,3 +1,4 @@
+{% from "partials/icons.njk" import icon %}
 {% set t = i18n[lang or 'id'] %}
 {% set here = page.url | replace('/index.html', '/') %}
 <nav class="nav">
@@ -12,8 +13,10 @@
     </ul>
 
     <div class="nav__right">
-      <a class="lang-switch" href="{{ altUrl or (site.nav[0].urlEn if (lang or 'id') == 'id' else site.nav[0].url) }}" title="{{ t.switchTo }}">{{ t.switchTo }}</a>
-      <button class="nav__toggle" type="button" aria-label="Menu" aria-expanded="false"><span></span></button>
+      <a class="lang-switch" href="{{ altUrl or (site.nav[0].urlEn if (lang or 'id') == 'id' else site.nav[0].url) }}" title="{{ t.switchTo }}">
+        {{ icon("globe", 14) }}<span>{{ t.switchTo }}</span>
+      </a>
+      <button class="nav__toggle" type="button" aria-label="Menu" aria-expanded="false">{{ icon("menu", 20) }}</button>
     </div>
   </div>
 

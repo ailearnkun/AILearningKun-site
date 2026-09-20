@@ -85,4 +85,70 @@
       }, 120);
     });
   }
+  // ---------------------------------------------------------------------
+  // Blog search — instant client-side filtering.
+  // The searchable text lives on each card (data-search-text), so there is
+  // no index file and no network request: results appear as you type.
+  // Degrades gracefully — with JS off, the full list stays visible.
+  // ---------------------------------------------------------------------
+  var searchBox = document.querySelector("[data-blog-search]");
+
+  if (searchBox) {
+    var input = searchBox.querySelector(".search__input");
+    var clearBtn = searchBox.querySelector(".search__clear");
+    var statusEl = searchBox.querySelector(".search__status");
+    var emptyEl = searchBox.querySelector(".search__empty");
+    var list = document.querySelector("[data-search-list]");
+    var items = list ? Array.prototype.slice.call(list.querySelectorAll("[data-search-item]")) : [];
+
+    var msgNone = searchBox.getAttribute("data-msg-none") || "No results";
+    var msgOne = searchBox.getAttribute("data-msg-one") || "1 result";
+    var msgMany = searchBox.getAttribute("data-msg-many") || "results";
+
+    var applyFilter = function () {
+      var q = (input.value || "").trim().toLowerCase();
+      var shown = 0;
+
+      items.forEach(function (item) {
+        var text = item.getAttribute("data-search-text") || "";
+        var match = !q || text.indexOf(q) !== -1;
+        item.hidden = !match;
+        if (match) shown++;
+      });
+
+      if (clearBtn) clearBtn.hidden = !q;
+
+      if (statusEl) {
+        if (!q) {
+          statusEl.hidden = true;
+          statusEl.textContent = "";
+        } else {
+          statusEl.hidden = false;
+          statusEl.textContent =
+            shown === 0 ? msgNone
+            : shown === 1 ? msgOne
+            : shown + " " + msgMany;
+        }
+      }
+
+      if (emptyEl) emptyEl.hidden = shown !== 0 || !q;
+    };
+
+    input.addEventListener("input", applyFilter);
+
+    input.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") {
+        input.value = "";
+        applyFilter();
+      }
+    });
+
+    if (clearBtn) {
+      clearBtn.addEventListener("click", function () {
+        input.value = "";
+        applyFilter();
+        input.focus();
+      });
+    }
+  }
 })();

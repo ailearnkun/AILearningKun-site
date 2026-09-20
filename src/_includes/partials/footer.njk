@@ -1,18 +1,27 @@
+{% from "partials/icons.njk" import icon %}
 {% set t = i18n[lang or 'id'] %}
 <footer class="footer">
   <div class="wrap">
     <div class="footer__inner">
       <div>
         <div class="footer__brand">{{ site.brand }}</div>
-        <p class="mb-0" style="max-width:38ch">{{ site.tagline[lang or 'id'] }}</p>
+        <p class="mb-0 measure">{{ site.tagline[lang or 'id'] }}</p>
       </div>
 
-      <ul class="footer__links">
-        {% for item in site.nav %}
-          {% set url = item.url if (lang or 'id') == 'id' else item.urlEn %}
-          <li><a href="{{ url }}">{{ t.nav[item.key] }}</a></li>
-        {% endfor %}
-      </ul>
+      <div>
+        <ul class="footer__links">
+          {% for item in site.nav %}
+            {% set url = item.url if (lang or 'id') == 'id' else item.urlEn %}
+            <li><a href="{{ url }}">{{ t.nav[item.key] }}</a></li>
+          {% endfor %}
+        </ul>
+
+        {% if site.social.github %}
+        <p class="mb-0 mt-1">
+          <a href="{{ site.social.github }}" target="_blank" rel="noopener">{{ icon("github", 16) }} GitHub</a>
+        </p>
+        {% endif %}
+      </div>
     </div>
 
     <div class="footer__bottom">
