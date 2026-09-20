@@ -118,6 +118,6 @@
   },
   "footer": {
     "rights": "All rights reserved.",
-    "builtWith": "Built with Eleventy & Materialize"
+    "builtWith": "Built with Eleventy"
   }
 }
