@@ -12,11 +12,13 @@
   --blue-600: #1e5eff;
   --blue-500: #2f74ff;
   --blue-400: #5b93ff;
+  --blue-700: #1a4fd6;
   --blue-100: #e8f0ff;
   --blue-050: #f4f8ff;
 
   --slate-900: #0f172a;
   --slate-700: #334155;
+  --slate-600: #475569;
   --slate-500: #64748b;
   --slate-300: #cbd5e1;
   --slate-100: #f1f5f9;
@@ -28,7 +30,9 @@
   --bg: var(--white);
   --bg-alt: var(--blue-050);
   --text: var(--slate-900);
-  --text-muted: var(--slate-500);
+  /* slate-600 rather than slate-500: 4.47:1 on the tinted background just
+     misses WCAG AA, 7.11:1 clears it comfortably. */
+  --text-muted: var(--slate-600);
   --border: #e2e8f0;
 
   /* Layout */
@@ -42,6 +46,22 @@
   --measure: 68ch;
 
   --font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* --------------------------------------------------------------------------
+   Fonts — self-hosted, so there is no third-party round trip on first paint.
+   One variable file covers every weight the site uses.
+   -------------------------------------------------------------------------- */
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/assets/fonts/inter-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+                 U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
+                 U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 /* --------------------------------------------------------------------------
@@ -384,7 +404,8 @@ table { border-collapse: collapse; width: 100%; }
   font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.03em;
-  color: var(--blue-600);
+  /* blue-700 on blue-100 is 5.85:1; blue-600 only reached 4.47:1 and failed AA. */
+  color: var(--blue-700);
   background: var(--blue-100);
   border-radius: 999px;
   padding: 0.2rem 0.65rem;

@@ -24,10 +24,8 @@
   <meta property="og:site_name" content="{{ site.brand }}" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  {# Fonts #}
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  {# Fonts: self-hosted, preloaded so the first paint is not font-blocked #}
+  <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
 
   {# Styles: single custom stylesheet (no framework payload) #}
   <link rel="stylesheet" href="/assets/css/style.css" />
