@@ -1,0 +1,50 @@
+---
+layout: layouts/base.njk
+lang: id
+title: Tentang
+permalink: "/tentang/"
+altUrl: "/en/about/"
+description: "Praktisi operasional properti di Bali yang membangun sistem AI sendiri."
+---
+{% set t = i18n.id %}
+
+<header class="page-head">
+  <div class="wrap">
+    <h1>{{ t.about.title }}</h1>
+    <p>{{ t.about.intro }}</p>
+  </div>
+</header>
+
+<section class="section">
+  <div class="wrap">
+    <div class="grid grid--2">
+      <div>
+        <h2>{{ t.about.backgroundTitle }}</h2>
+        <p>{{ t.about.backgroundText }}</p>
+      </div>
+      <div>
+        <h2>{{ t.about.approachTitle }}</h2>
+        <p>{{ t.about.approachText }}</p>
+      </div>
+    </div>
+
+    <div style="margin-top:3.5rem">
+      <h2>{{ t.about.skillsTitle }}</h2>
+      <div class="grid grid--2">
+        {% for skill in t.about.skills %}
+        <div class="card" style="padding:1.1rem 1.3rem">
+          <p class="mb-0" style="color:var(--slate-700);font-weight:500">{{ skill }}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:3.5rem">
+      <h3>{{ t.about.ctaTitle }}</h3>
+      <p>{{ t.about.ctaText }}</p>
+      <div class="btn-row" style="margin-top:1.25rem">
+        <a class="btn btn--primary" href="/kontak/">{{ t.cta.primary }}</a>
+      </div>
+    </div>
+  </div>
+</section>

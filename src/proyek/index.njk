@@ -1,0 +1,19 @@
+---
+layout: layouts/page.njk
+lang: id
+title: Proyek
+intro: Sistem yang saya bangun dan pakai sendiri. Semua berjalan nyata, bukan demo.
+permalink: "/proyek/"
+altUrl: "/en/work/"
+---
+<div class="grid grid--2">
+  {% for p in projects %}
+  <a class="card card--link" href="/proyek/{{ p.slug }}/">
+    <h3>{{ p.title.id }}</h3>
+    <p>{{ p.summary.id }}</p>
+    <div class="card__meta">
+      {% for s in p.stack | limit(3) %}<span class="tag">{{ s }}</span>{% endfor %}
+    </div>
+  </a>
+  {% endfor %}
+</div>

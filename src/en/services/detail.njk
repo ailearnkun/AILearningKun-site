@@ -1,0 +1,60 @@
+---
+layout: layouts/base.njk
+lang: en
+pagination:
+  data: services
+  size: 1
+  alias: service
+permalink: "/en/services/{{ service.slug }}/"
+eleventyComputed:
+  title: "{{ service.title.en }}"
+  description: "{{ service.summary.en }}"
+  altUrl: "/layanan/{{ service.slug }}/"
+---
+{% set t = i18n.en %}
+
+<header class="page-head">
+  <div class="wrap">
+    <p style="color:#5b93ff;font-weight:600;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.75rem">{{ t.nav.services }}</p>
+    <h1>{{ service.title.en }}</h1>
+    <p>{{ service.summary.en }}</p>
+  </div>
+</header>
+
+<section class="section">
+  <div class="wrap">
+    <div class="grid grid--2">
+      <div>
+        <h2>{{ t.services.problem }}</h2>
+        <p>{{ service.problem.en }}</p>
+      </div>
+      <div>
+        <h2>{{ t.services.outcome }}</h2>
+        <p>{{ service.outcome.en }}</p>
+      </div>
+    </div>
+
+    <div style="margin-top:3rem">
+      <h2>{{ t.services.approach }}</h2>
+      <ul class="prose">
+        {% for step in service.approach.en %}<li>{{ step }}</li>{% endfor %}
+      </ul>
+    </div>
+
+    <div class="card" style="margin-top:3rem">
+      <h3>{{ t.services.start }}</h3>
+      <p>{{ service.start.en }}</p>
+      <div class="btn-row" style="margin-top:1.25rem">
+        <a class="btn btn--primary" href="/en/contact/">{{ t.cta.primary }}</a>
+      </div>
+    </div>
+
+    {% if service.stack %}
+    <div class="card__meta" style="margin-top:2rem">
+      {% for s in service.stack %}<span class="tag">{{ s }}</span>{% endfor %}
+    </div>
+    {% endif %}
+
+    <p style="margin-top:2.5rem"><a href="/en/services/">&larr; {{ t.nav.services }}</a></p>
+  </div>
+</section>

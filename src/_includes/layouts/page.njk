@@ -1,0 +1,15 @@
+---
+layout: layouts/base.njk
+---
+<header class="page-head">
+  <div class="wrap">
+    <h1>{{ title }}</h1>
+    {% if intro %}<p>{{ intro }}</p>{% endif %}
+  </div>
+</header>
+
+<div class="section">
+  <div class="wrap">
+    {{ content | safe }}
+  </div>
+</div>

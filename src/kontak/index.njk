@@ -1,0 +1,78 @@
+---
+layout: layouts/base.njk
+lang: id
+title: Kontak
+permalink: "/kontak/"
+altUrl: "/en/contact/"
+description: "Kirim pesan — saya biasanya membalas dalam 1×24 jam."
+---
+{% set t = i18n.id %}
+
+<header class="page-head">
+  <div class="wrap">
+    <h1>{{ t.contact.title }}</h1>
+    <p>{{ t.contact.intro }}</p>
+  </div>
+</header>
+
+<section class="section">
+  <div class="wrap">
+    <div class="grid grid--2">
+
+      <!-- FORM -->
+      <div>
+        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/terima-kasih/">
+          <input type="hidden" name="form-name" value="contact" />
+          <p style="display:none">
+            <label>Jangan diisi: <input name="bot-field" /></label>
+          </p>
+
+          <div class="form-field">
+            <label for="name">{{ t.contact.formName }}</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+
+          <div class="form-field">
+            <label for="email">{{ t.contact.formEmail }}</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+
+          <div class="form-field">
+            <label for="message">{{ t.contact.formMessage }}</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+
+          <button class="btn btn--primary" type="submit">{{ t.contact.formSubmit }}</button>
+          <p class="form-note">{{ t.contact.formNote }}</p>
+        </form>
+      </div>
+
+      <!-- DETAILS -->
+      <div>
+        <div class="contact-card">
+          <dl style="margin:0">
+            <div class="contact-item">
+              <dt>{{ t.contact.emailLabel }}</dt>
+              <dd><a href="mailto:{{ site.email }}">{{ site.email }}</a></dd>
+            </div>
+            {% if site.whatsapp %}
+            <div class="contact-item">
+              <dt>{{ t.contact.whatsappLabel }}</dt>
+              <dd><a href="https://wa.me/{{ site.whatsapp }}" target="_blank" rel="noopener">Chat via WhatsApp</a></dd>
+            </div>
+            {% endif %}
+            <div class="contact-item">
+              <dt>{{ t.contact.locationLabel }}</dt>
+              <dd>{{ site.location }}</dd>
+            </div>
+            <div class="contact-item">
+              <dt>{{ t.contact.responseTime }}</dt>
+              <dd>{{ t.contact.responseValue }}</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

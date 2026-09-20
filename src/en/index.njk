@@ -1,0 +1,93 @@
+---
+layout: layouts/base.njk
+lang: en
+permalink: "/en/"
+altUrl: "/"
+title: ""
+description: "Kun — a property operations practitioner in Bali who builds AI systems to make operations more efficient, measurable, and consistent."
+---
+{% set t = i18n.en %}
+
+<section class="hero">
+  <div class="wrap hero__inner">
+    <span class="hero__label">{{ t.home.heroLabel }}</span>
+    <h1>{{ t.home.heroTitle }}</h1>
+    <p>{{ t.home.heroText }}</p>
+    <div class="btn-row">
+      <a class="btn btn--primary" href="/en/contact/">{{ t.cta.primary }}</a>
+      <a class="btn btn--outline-light" href="/en/work/">{{ t.cta.secondary }}</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head" data-reveal><h2>{{ t.home.pillarsTitle }}</h2></div>
+    <div class="grid grid--3">
+      {% for p in t.home.pillars %}
+      <article class="card" data-reveal>
+        <div class="card__icon">{{ loop.index }}</div>
+        <h3>{{ p.title }}</h3>
+        <p>{{ p.text }}</p>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <h2>{{ t.home.workTitle }}</h2>
+      <p>{{ t.home.workText }}</p>
+    </div>
+    <div class="grid grid--3">
+      {% for project in projects %}
+        {% if project.featured %}
+        <a class="card card--link" href="/en/work/{{ project.slug }}/" data-reveal>
+          <h3>{{ project.title.en }}</h3>
+          <p>{{ project.summary.en }}</p>
+          <div class="card__meta">
+            {% for s in project.stack | limit(3) %}<span class="tag">{{ s }}</span>{% endfor %}
+          </div>
+        </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <p style="margin-top:2rem"><a href="/en/work/">{{ t.home.allWork }} &rarr;</a></p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head" data-reveal><h2>{{ t.home.blogTitle }}</h2></div>
+    {% set enPosts = collections.posts | byLang('en') | newestFirst %}
+    {% if enPosts.length %}
+    <div class="grid grid--3">
+      {% for post in enPosts | limit(3) %}
+      <a class="card card--link" href="{{ post.url }}" data-reveal>
+        <h3>{{ post.data.title }}</h3>
+        <p>{{ post.data.description }}</p>
+        <div class="card__meta"><span class="muted">{{ post.date | readableDate('en') }}</span></div>
+      </a>
+      {% endfor %}
+    </div>
+    <p style="margin-top:2rem"><a href="/en/blog/">{{ t.home.allPosts }} &rarr;</a></p>
+    {% else %}
+    <p class="muted">{{ t.blog.empty }}</p>
+    {% endif %}
+  </div>
+</section>
+
+<section class="section section--navy">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <h2>{{ t.home.aboutTitle }}</h2>
+      <p>{{ t.home.aboutText }}</p>
+    </div>
+    <div class="btn-row" data-reveal>
+      <a class="btn btn--light" href="/en/contact/">{{ t.cta.primary }}</a>
+      <a class="btn btn--outline-light" href="/en/about/">{{ t.nav.about }}</a>
+    </div>
+  </div>
+</section>

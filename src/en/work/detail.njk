@@ -1,0 +1,58 @@
+---
+layout: layouts/base.njk
+lang: en
+pagination:
+  data: projects
+  size: 1
+  alias: project
+permalink: "/en/work/{{ project.slug }}/"
+eleventyComputed:
+  title: "{{ project.title.en }}"
+  description: "{{ project.summary.en }}"
+  altUrl: "/proyek/{{ project.slug }}/"
+---
+{% set t = i18n.en %}
+
+<header class="page-head">
+  <div class="wrap">
+    <p style="color:#5b93ff;font-weight:600;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.75rem">{{ t.nav.work }} · {{ project.year }}</p>
+    <h1>{{ project.title.en }}</h1>
+    <p>{{ project.summary.en }}</p>
+  </div>
+</header>
+
+<section class="section">
+  <div class="wrap">
+    <div class="grid grid--2">
+      <div>
+        <h2>{{ t.work.context }}</h2>
+        <p>{{ project.context.en }}</p>
+      </div>
+      <div>
+        <h2>{{ t.work.problem }}</h2>
+        <p>{{ project.problem.en }}</p>
+      </div>
+    </div>
+
+    <div style="margin-top:3rem">
+      <h2>{{ t.work.built }}</h2>
+      <ul class="prose">
+        {% for item in project.built.en %}<li>{{ item }}</li>{% endfor %}
+      </ul>
+    </div>
+
+    <div class="card" style="margin-top:2.5rem">
+      <h3>{{ t.work.result }}</h3>
+      <p>{{ project.result.en }}</p>
+    </div>
+
+    <div style="margin-top:2.5rem">
+      <h2 style="font-size:1.05rem">{{ t.work.stack }}</h2>
+      <div class="card__meta">
+        {% for s in project.stack %}<span class="tag">{{ s }}</span>{% endfor %}
+      </div>
+    </div>
+
+    <p style="margin-top:2.5rem"><a href="/en/work/">&larr; {{ t.nav.work }}</a></p>
+  </div>
+</section>

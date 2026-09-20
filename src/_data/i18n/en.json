@@ -1,0 +1,113 @@
+{
+  "lang": "en",
+  "langLabel": "English",
+  "switchTo": "Bahasa Indonesia",
+  "switchUrl": "/",
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "work": "Work",
+    "blog": "Blog",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "cta": {
+    "primary": "Get in Touch",
+    "secondary": "View Work",
+    "consult": "Book a Free Chat"
+  },
+  "home": {
+    "heroLabel": "Operations × AI",
+    "heroTitle": "Operations that run smoother, powered by AI",
+    "heroText": "I help properties and businesses tighten up their operations with systems I build myself — from automated record-keeping to reports that arrive without being asked for.",
+    "pillarsTitle": "What I do",
+    "pillars": [
+      {
+        "title": "Operations Optimization",
+        "text": "Structuring workflows, SOPs, and monitoring so daily operations don't depend on someone's memory."
+      },
+      {
+        "title": "Automation & Reporting",
+        "text": "Connecting the tools you already use and automating repetitive work — reports come to you, not the other way around."
+      },
+      {
+        "title": "Custom AI Systems",
+        "text": "Building assistants and AI agents that handle real work: recording, monitoring, summarizing, and reminding."
+      }
+    ],
+    "workTitle": "Selected work",
+    "workText": "Real systems already in use — not concepts.",
+    "allWork": "See all work",
+    "blogTitle": "Latest writing",
+    "allPosts": "See all posts",
+    "aboutTitle": "Background",
+    "aboutText": "I work in rental property operations in Bali and build the AI systems I use daily myself. That combination means I know exactly where operations stall — and how to fix it."
+  },
+  "services": {
+    "title": "Services",
+    "intro": "Three ways I can help — all grounded in real operational experience, not theory.",
+    "problem": "The problem it solves",
+    "approach": "Approach",
+    "outcome": "Expected outcome",
+    "start": "How to start",
+    "ctaTitle": "Facing an operational challenge?",
+    "ctaText": "Tell me your situation. I'll tell you honestly whether I can help or not."
+  },
+  "work": {
+    "title": "Work",
+    "intro": "Systems I built and use myself. All running in production, not demos.",
+    "context": "Context",
+    "problem": "Challenge",
+    "built": "What I built",
+    "stack": "Stack",
+    "result": "Result",
+    "visit": "Visit"
+  },
+  "blog": {
+    "title": "Blog",
+    "intro": "Notes on operations, automation, and the AI I use every day.",
+    "readMore": "Read more",
+    "minRead": "min read",
+    "allTags": "All topics",
+    "empty": "No posts yet.",
+    "backToBlog": "Back to blog"
+  },
+  "about": {
+    "title": "About",
+    "intro": "A property operations practitioner in Bali who builds his own AI systems.",
+    "backgroundTitle": "Background",
+    "backgroundText": "I run operations for rental properties in Bali. This work taught me that the biggest problem is rarely a lack of effort — it's processes that depend on people's memory, reports that are always late, and repetitive work that eats up time.",
+    "approachTitle": "How I work",
+    "approachText": "I build AI systems to solve those problems, then use them myself every day. Because I'm the user, I know what genuinely helps and what just looks impressive.",
+    "skillsTitle": "Skills",
+    "skills": [
+      "Rental property operations management",
+      "Workflow automation & tool integration",
+      "AI agent & assistant development",
+      "Reporting and record-keeping automation",
+      "Data integration (Google Workspace, APIs, databases)",
+      "SOP design and operational monitoring"
+    ],
+    "ctaTitle": "Let's talk",
+    "ctaText": "Open to collaboration, consulting, and opportunities in operations and automation."
+  },
+  "contact": {
+    "title": "Contact",
+    "intro": "Send a message — I usually reply within 24 hours.",
+    "formName": "Name",
+    "formEmail": "Email",
+    "formMessage": "Message",
+    "formSubmit": "Send Message",
+    "formNote": "This form is secure. Your data is never shared with third parties.",
+    "emailLabel": "Email",
+    "whatsappLabel": "WhatsApp",
+    "locationLabel": "Location",
+    "responseTime": "Response time",
+    "responseValue": "Usually within 24 hours",
+    "success": "Thank you! Your message has been sent."
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "builtWith": "Built with Eleventy & Materialize"
+  }
+}

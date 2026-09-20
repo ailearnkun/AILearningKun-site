@@ -1,0 +1,29 @@
+{
+  "brand": "AI Learn Kun",
+  "owner": "Kun Tegar Jaya Ibrahim Haryono",
+  "ownerShort": "Kun",
+  "url": "https://ailearnkun.my.id",
+  "email": "ai.learn.kun@gmail.com",
+  "whatsapp": "",
+  "location": "Bali, Indonesia",
+  "tagline": {
+    "id": "Optimasi operasional properti & bisnis, ditenagai sistem AI yang saya bangun sendiri.",
+    "en": "Property and business operations optimization, powered by AI systems I build myself."
+  },
+  "description": {
+    "id": "Kun — praktisi operasional properti di Bali yang membangun sistem AI untuk membuat operasional berjalan lebih efisien, terukur, dan konsisten.",
+    "en": "Kun — a property operations practitioner in Bali who builds AI systems to make operations more efficient, measurable, and consistent."
+  },
+  "nav": [
+    { "key": "home", "url": "/", "urlEn": "/en/" },
+    { "key": "services", "url": "/layanan/", "urlEn": "/en/services/" },
+    { "key": "work", "url": "/proyek/", "urlEn": "/en/work/" },
+    { "key": "blog", "url": "/blog/", "urlEn": "/en/blog/" },
+    { "key": "about", "url": "/tentang/", "urlEn": "/en/about/" },
+    { "key": "contact", "url": "/kontak/", "urlEn": "/en/contact/" }
+  ],
+  "social": {
+    "github": "https://github.com/ailearnkun",
+    "linkedin": ""
+  }
+}

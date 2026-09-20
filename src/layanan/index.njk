@@ -1,0 +1,27 @@
+---
+layout: layouts/page.njk
+lang: id
+title: Layanan
+intro: Tiga cara saya bisa membantu — semuanya berangkat dari pengalaman operasional nyata, bukan teori.
+permalink: "/layanan/"
+altUrl: "/en/services/"
+---
+{% set t = i18n.id %}
+<div class="grid grid--3">
+  {% for s in services %}
+  <a class="card card--link" href="/layanan/{{ s.slug }}/">
+    <div class="card__icon">{{ loop.index }}</div>
+    <h3>{{ s.title.id }}</h3>
+    <p>{{ s.summary.id }}</p>
+    <div class="card__meta"><span class="tag">Selengkapnya &rarr;</span></div>
+  </a>
+  {% endfor %}
+</div>
+
+<div class="section-head" style="margin-top:3.5rem">
+  <h2>{{ t.services.ctaTitle }}</h2>
+  <p>{{ t.services.ctaText }}</p>
+  <div class="btn-row" style="margin-top:1.25rem">
+    <a class="btn btn--primary" href="/kontak/">{{ t.cta.consult }}</a>
+  </div>
+</div>

@@ -1,0 +1,119 @@
+[
+  {
+    "slug": "operations",
+    "order": 1,
+    "title": {
+      "id": "Optimasi Operasional",
+      "en": "Operations Optimization"
+    },
+    "summary": {
+      "id": "Menata alur kerja, SOP, dan monitoring supaya operasional harian tidak bergantung pada ingatan orang.",
+      "en": "Structuring workflows, SOPs, and monitoring so daily operations don't depend on someone's memory."
+    },
+    "problem": {
+      "id": "Operasional yang berjalan hanya karena \"yang penting jalan\" akan rapuh: tugas terlewat, standar tidak konsisten, dan masalah baru ketahuan setelah membesar. Semua bergantung pada orang yang paling rajin mengingat.",
+      "en": "Operations that run on \"as long as it works\" are fragile: tasks get missed, standards drift, and problems surface only after they've grown. Everything depends on whoever remembers best."
+    },
+    "approach": {
+      "id": [
+        "Memetakan alur kerja yang ada dan menemukan titik tersendat",
+        "Menyusun SOP yang singkat dan benar-benar dipakai, bukan dokumen tebal yang tidak dibaca",
+        "Membangun monitoring agar penyimpangan terlihat lebih awal",
+        "Menetapkan penanggung jawab dan tenggat yang jelas untuk setiap langkah"
+      ],
+      "en": [
+        "Mapping existing workflows and locating the bottlenecks",
+        "Writing short SOPs that actually get used, not thick documents nobody reads",
+        "Building monitoring so deviations surface early",
+        "Assigning a clear owner and deadline to every step"
+      ]
+    },
+    "outcome": {
+      "id": "Operasional yang bisa dijalankan siapa pun dengan hasil konsisten — tidak lagi bergantung pada satu orang.",
+      "en": "Operations anyone can run with consistent results — no longer dependent on a single person."
+    },
+    "start": {
+      "id": "Mulai dari satu area yang paling sering bermasalah. Kita rapikan itu dulu, ukur hasilnya, baru meluas.",
+      "en": "Start with the one area that breaks most often. We fix that first, measure the result, then expand."
+    },
+    "stack": ["SOP design", "Process mapping", "Monitoring", "Operational reporting"]
+  },
+  {
+    "slug": "automation",
+    "order": 2,
+    "title": {
+      "id": "Otomasi & Pelaporan",
+      "en": "Automation & Reporting"
+    },
+    "summary": {
+      "id": "Menghubungkan tools yang sudah dipakai dan mengotomasi pekerjaan berulang — laporan datang sendiri, bukan diminta.",
+      "en": "Connecting the tools you already use and automating repetitive work — reports come to you, not the other way around."
+    },
+    "problem": {
+      "id": "Waktu paling banyak habis bukan untuk mengambil keputusan, tapi untuk mengumpulkan data dan menyusun laporan. Pekerjaan yang sama diulang setiap minggu dengan tangan.",
+      "en": "Most time is spent not on decisions, but on gathering data and assembling reports. The same work is redone by hand every week."
+    },
+    "approach": {
+      "id": [
+        "Mendata pekerjaan berulang dan menghitung berapa jam per bulan yang tersita",
+        "Menghubungkan tools yang sudah ada (spreadsheet, kalender, email, chat) tanpa memaksa pindah aplikasi",
+        "Mengotomasi pengumpulan data dan penyusunan laporan",
+        "Menjadwalkan pengiriman hasil ke kanal yang sudah dipakai tim"
+      ],
+      "en": [
+        "Inventorying repetitive work and counting the hours it consumes monthly",
+        "Connecting existing tools (spreadsheets, calendar, email, chat) without forcing a migration",
+        "Automating data collection and report assembly",
+        "Scheduling delivery to the channels the team already uses"
+      ]
+    },
+    "outcome": {
+      "id": "Laporan rutin tersusun dan terkirim otomatis. Waktu yang dulu habis untuk administrasi bisa dipakai untuk hal yang benar-benar bernilai.",
+      "en": "Routine reports assemble and deliver themselves. Time previously spent on admin goes to work that actually matters."
+    },
+    "start": {
+      "id": "Pilih satu laporan yang paling sering diminta. Kita otomasi itu dulu sebagai bukti, lalu menambah yang lain.",
+      "en": "Pick the one report most often requested. We automate that first as proof, then add the rest."
+    },
+    "stack": ["Google Workspace", "APIs", "Scheduled jobs", "Spreadsheets", "Chat integrations"]
+  },
+  {
+    "slug": "ai-systems",
+    "order": 3,
+    "title": {
+      "id": "Sistem AI Kustom",
+      "en": "Custom AI Systems"
+    },
+    "summary": {
+      "id": "Membangun asisten dan agen AI yang menangani tugas nyata: mencatat, memantau, merangkum, dan mengingatkan.",
+      "en": "Building assistants and AI agents that handle real work: recording, monitoring, summarizing, and reminding."
+    },
+    "problem": {
+      "id": "Banyak alat AI berhenti di tahap demo — terlihat mengesankan tapi tidak menyentuh pekerjaan sehari-hari. Yang dibutuhkan adalah sistem yang benar-benar dipakai, setiap hari.",
+      "en": "Many AI tools stop at the demo stage — impressive to watch but never touching daily work. What's needed is a system that genuinely gets used, every day."
+    },
+    "approach": {
+      "id": [
+        "Memilih satu tugas nyata yang jelas hasilnya, bukan proyek eksperimen",
+        "Membangun agen yang punya akses ke data dan tools yang relevan",
+        "Menyiapkan memori dan prosedur agar sistem belajar dari pengalaman sebelumnya",
+        "Menjalankan bertahap: mulai dari tugas kecil, lalu menambah kemampuan"
+      ],
+      "en": [
+        "Choosing one real task with a clear outcome, not an experimental project",
+        "Building an agent with access to the relevant data and tools",
+        "Setting up memory and procedures so the system learns from past work",
+        "Rolling out gradually: starting with a small task, then adding capability"
+      ]
+    },
+    "outcome": {
+      "id": "Sistem AI yang benar-benar dipakai harian — bukan demo yang ditinggalkan setelah presentasi.",
+      "en": "An AI system genuinely used daily — not a demo abandoned after the presentation."
+    },
+    "start": {
+      "id": "Ceritakan satu tugas yang paling membosankan dan paling sering diulang. Itu biasanya titik mulai terbaik.",
+      "en": "Describe the single most boring, most repeated task. That's usually the best starting point."
+    },
+    "stack": ["AI agents", "LLM APIs", "Python", "Tool integration", "Self-hosted deployment"]
+  }
+]

@@ -1,0 +1,19 @@
+---
+layout: layouts/page.njk
+lang: en
+title: Work
+intro: Systems I built and use myself. All running in production, not demos.
+permalink: "/en/work/"
+altUrl: "/proyek/"
+---
+<div class="grid grid--2">
+  {% for p in projects %}
+  <a class="card card--link" href="/en/work/{{ p.slug }}/">
+    <h3>{{ p.title.en }}</h3>
+    <p>{{ p.summary.en }}</p>
+    <div class="card__meta">
+      {% for s in p.stack | limit(3) %}<span class="tag">{{ s }}</span>{% endfor %}
+    </div>
+  </a>
+  {% endfor %}
+</div>

@@ -1,0 +1,27 @@
+---
+layout: layouts/page.njk
+lang: en
+title: Blog
+intro: Notes on operations, automation, and the AI I use every day.
+permalink: "/en/blog/"
+altUrl: "/blog/"
+---
+{% set t = i18n.en %}
+{% set posts = collections.posts | byLang('en') | newestFirst %}
+
+{% if posts.length %}
+<div class="grid grid--2">
+  {% for post in posts %}
+  <a class="card card--link" href="{{ post.url }}">
+    <h3>{{ post.data.title }}</h3>
+    <p>{{ post.data.description }}</p>
+    <div class="card__meta">
+      <span class="muted">{{ post.date | readableDate('en') }}</span>
+      {% for tag in post.data.tags %}{% if tag != 'posts' %}<span class="tag">{{ tag }}</span>{% endif %}{% endfor %}
+    </div>
+  </a>
+  {% endfor %}
+</div>
+{% else %}
+<p class="muted">{{ t.blog.empty }}</p>
+{% endif %}

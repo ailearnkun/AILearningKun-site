@@ -1,0 +1,23 @@
+{% set t = i18n[lang or 'id'] %}
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__inner">
+      <div>
+        <div class="footer__brand">{{ site.brand }}</div>
+        <p class="mb-0" style="max-width:38ch">{{ site.tagline[lang or 'id'] }}</p>
+      </div>
+
+      <ul class="footer__links">
+        {% for item in site.nav %}
+          {% set url = item.url if (lang or 'id') == 'id' else item.urlEn %}
+          <li><a href="{{ url }}">{{ t.nav[item.key] }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="footer__bottom">
+      <span>&copy; {% year %} {{ site.brand }}. {{ t.footer.rights }}</span>
+      <span>{{ t.footer.builtWith }}</span>
+    </div>
+  </div>
+</footer>

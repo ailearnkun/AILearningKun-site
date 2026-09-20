@@ -1,0 +1,31 @@
+---
+layout: layouts/base.njk
+---
+{% set t = i18n[lang or 'id'] %}
+<header class="page-head">
+  <div class="wrap">
+    <h1>{{ title }}</h1>
+    <div class="post-meta" style="color:#a9bede;margin-top:1rem;margin-bottom:0">
+      <time datetime="{{ date | isoDate }}">{{ date | readableDate(lang) }}</time>
+      {% if readTime %}<span>·</span><span>{{ readTime }} {{ t.blog.minRead }}</span>{% endif %}
+    </div>
+  </div>
+</header>
+
+<article class="section">
+  <div class="wrap">
+    <div class="prose">
+      {{ content | safe }}
+    </div>
+
+    {% if tags %}
+    <div class="card__meta" style="margin-top:2.5rem">
+      {% for tag in tags %}<span class="tag">{{ tag }}</span>{% endfor %}
+    </div>
+    {% endif %}
+
+    <p style="margin-top:2.5rem">
+      <a href="{{ '/blog/' if (lang or 'id') == 'id' else '/en/blog/' }}">&larr; {{ t.blog.backToBlog }}</a>
+    </p>
+  </div>
+</article>

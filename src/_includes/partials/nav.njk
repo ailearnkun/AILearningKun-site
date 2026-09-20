@@ -1,0 +1,28 @@
+{% set t = i18n[lang or 'id'] %}
+{% set here = page.url | replace('/index.html', '/') %}
+<nav class="nav">
+  <div class="wrap nav__inner">
+    <a class="nav__brand" href="{{ '/' if (lang or 'id') == 'id' else '/en/' }}">AI Learn <span>Kun</span></a>
+
+    <ul class="nav__links">
+      {% for item in site.nav %}
+        {% set url = item.url if (lang or 'id') == 'id' else item.urlEn %}
+        <li><a href="{{ url }}"{% if here == url %} aria-current="page"{% endif %}>{{ t.nav[item.key] }}</a></li>
+      {% endfor %}
+    </ul>
+
+    <div class="nav__right">
+      <a class="lang-switch" href="{{ altUrl or (site.nav[0].urlEn if (lang or 'id') == 'id' else site.nav[0].url) }}" title="{{ t.switchTo }}">{{ t.switchTo }}</a>
+      <button class="nav__toggle" type="button" aria-label="Menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+
+  <div class="nav__mobile">
+    <ul>
+      {% for item in site.nav %}
+        {% set url = item.url if (lang or 'id') == 'id' else item.urlEn %}
+        <li><a href="{{ url }}">{{ t.nav[item.key] }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</nav>

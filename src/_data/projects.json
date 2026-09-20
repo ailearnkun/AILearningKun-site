@@ -1,0 +1,131 @@
+[
+  {
+    "slug": "hermes-agent",
+    "featured": true,
+    "order": 1,
+    "year": "2026",
+    "title": {
+      "id": "Hermes Agent — Asisten AI Multi-Platform",
+      "en": "Hermes Agent — Multi-Platform AI Assistant"
+    },
+    "summary": {
+      "id": "Agen AI yang saya jalankan sendiri di server pribadi. Terhubung ke beberapa kanal percakapan sekaligus, menjalankan tugas terjadwal, dan memproses beberapa pekerjaan secara paralel.",
+      "en": "A self-hosted AI agent I run on my own server. Connected to several chat channels at once, running scheduled jobs and handling multiple tasks in parallel."
+    },
+    "context": {
+      "id": "Operasional harian butuh respons cepat dan pencatatan yang konsisten — tapi menunggu saya buka laptop setiap kali jelas tidak praktis.",
+      "en": "Daily operations need fast responses and consistent record-keeping — but waiting for me to open a laptop every time is simply impractical."
+    },
+    "problem": {
+      "id": "Pekerjaan berulang (mencatat, merangkum, mengingatkan) menyita waktu dan mudah terlupa. Informasi tersebar di banyak kanal.",
+      "en": "Repetitive work (recording, summarizing, reminding) eats up time and is easily forgotten. Information is scattered across channels."
+    },
+    "built": {
+      "id": [
+        "Agen AI dengan akses terminal, berkas, pencarian web, dan otomasi browser",
+        "Integrasi beberapa kanal percakapan dalam satu identitas",
+        "Penjadwal tugas otomatis dengan pengiriman hasil ke kanal tujuan",
+        "Orkestrasi beberapa sub-tugas paralel untuk pekerjaan berat",
+        "Memori lintas sesi dan pustaka prosedur yang bisa dipakai ulang"
+      ],
+      "en": [
+        "An AI agent with terminal, file, web search, and browser automation access",
+        "Several chat channels unified under a single identity",
+        "Automated task scheduler that delivers results to a target channel",
+        "Parallel sub-task orchestration for heavier workloads",
+        "Cross-session memory and a reusable procedure library"
+      ]
+    },
+    "stack": ["Python", "Self-hosted server", "Telegram Bot API", "Scheduled jobs", "LLM APIs"],
+    "result": {
+      "id": "Pekerjaan berulang yang sebelumnya manual kini berjalan otomatis dan terjadwal — laporan datang sendiri tanpa diminta.",
+      "en": "Repetitive manual work now runs automatically on a schedule — reports arrive without being asked for."
+    }
+  },
+  {
+    "slug": "financial-tracking",
+    "featured": true,
+    "order": 2,
+    "year": "2026",
+    "title": {
+      "id": "Sistem Pencatatan Keuangan Otomatis",
+      "en": "Automated Financial Record-Keeping System"
+    },
+    "summary": {
+      "id": "Sistem pembukuan berpasangan (double-entry) yang bisa diisi lewat chat — cukup kirim teks, foto struk, atau pesan suara.",
+      "en": "A double-entry bookkeeping system that can be filled in via chat — just send text, a receipt photo, or a voice message."
+    },
+    "context": {
+      "id": "Pencatatan keuangan manual sering tertunda, dan saat tertunda, laporan jadi tidak akurat.",
+      "en": "Manual financial recording gets delayed, and when it's delayed, reports become inaccurate."
+    },
+    "problem": {
+      "id": "Mengetik transaksi ke spreadsheet satu per satu membosankan dan rawan salah. Neraca jadi tidak seimbang.",
+      "en": "Typing transactions into a spreadsheet one by one is tedious and error-prone. The balance sheet drifts out of balance."
+    },
+    "built": {
+      "id": [
+        "Pencatatan berpasangan otomatis — debit dan kredit selalu seimbang",
+        "Input lewat chat dalam tiga format: teks, foto struk, dan pesan suara",
+        "Klasifikasi otomatis ke akun yang tepat",
+        "Neraca saldo dan laporan yang terhitung sendiri",
+        "Validasi yang menolak entri tidak seimbang sebelum tersimpan"
+      ],
+      "en": [
+        "Automatic double-entry recording — debits and credits always balance",
+        "Chat-based input in three formats: text, receipt photo, and voice message",
+        "Automatic classification to the correct account",
+        "Self-calculating trial balance and reports",
+        "Validation that rejects unbalanced entries before they are saved"
+      ]
+    },
+    "stack": ["Google Sheets API", "Google Drive", "Telegram Bot API", "Python", "Double-entry accounting"],
+    "result": {
+      "id": "Mencatat transaksi jadi urusan beberapa detik lewat chat, dan laporan selalu dalam kondisi seimbang.",
+      "en": "Recording a transaction takes seconds via chat, and reports always stay in balance."
+    }
+  },
+  {
+    "slug": "automated-reporting",
+    "featured": true,
+    "order": 3,
+    "year": "2026",
+    "title": {
+      "id": "Pipeline Pelaporan & Distribusi Otomatis",
+      "en": "Automated Reporting & Distribution Pipeline"
+    },
+    "summary": {
+      "id": "Penjadwal yang menyusun dan mengirim materi secara berkala ke kanal distribusi, dengan kelanjutan topik antar-terbitan.",
+      "en": "A scheduler that composes and delivers material periodically to a distribution channel, continuing topics across issues."
+    },
+    "context": {
+      "id": "Konten berkala (materi belajar, ringkasan, laporan) mudah terbengkalai kalau harus disusun manual tiap kali.",
+      "en": "Periodic content (learning material, summaries, reports) tends to be abandoned when it must be composed manually each time."
+    },
+    "problem": {
+      "id": "Menyusun materi berulang secara konsisten butuh disiplin tinggi. Tanpa sistem, terbitan jadi tidak teratur atau berhenti.",
+      "en": "Producing material consistently requires high discipline. Without a system, issues become irregular or stop altogether."
+    },
+    "built": {
+      "id": [
+        "Penjadwalan otomatis dengan format keluaran yang baku",
+        "Kelanjutan nomor dan topik antar-terbitan secara otomatis",
+        "Pengiriman langsung ke kanal distribusi",
+        "Verifikasi pengiriman tercatat, bukan diasumsikan",
+        "Isolasi kegagalan — satu terbitan gagal tidak menghentikan yang berikutnya"
+      ],
+      "en": [
+        "Automated scheduling with a fixed output format",
+        "Automatic continuation of numbering and topics across issues",
+        "Direct delivery to the distribution channel",
+        "Delivery verification recorded, not assumed",
+        "Failure isolation — one failed issue does not stop the next"
+      ]
+    },
+    "stack": ["Scheduled jobs", "LLM APIs", "Telegram Bot API", "Delivery ledger"],
+    "result": {
+      "id": "Terbitan berkala berjalan tanpa diingatkan, dan riwayat pengiriman bisa diaudit kapan saja.",
+      "en": "Periodic issues run without reminders, and delivery history can be audited at any time."
+    }
+  }
+]

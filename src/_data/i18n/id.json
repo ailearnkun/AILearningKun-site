@@ -1,0 +1,113 @@
+{
+  "lang": "id",
+  "langLabel": "Bahasa Indonesia",
+  "switchTo": "English",
+  "switchUrl": "/en/",
+  "nav": {
+    "home": "Beranda",
+    "services": "Layanan",
+    "work": "Proyek",
+    "blog": "Blog",
+    "about": "Tentang",
+    "contact": "Kontak"
+  },
+  "cta": {
+    "primary": "Hubungi Saya",
+    "secondary": "Lihat Proyek",
+    "consult": "Diskusi Gratis"
+  },
+  "home": {
+    "heroLabel": "Operasional × AI",
+    "heroTitle": "Operasional yang berjalan lebih rapi, ditenagai AI",
+    "heroText": "Saya membantu properti dan bisnis merapikan operasionalnya lewat sistem yang saya bangun sendiri — dari pencatatan otomatis sampai pelaporan yang jalan tanpa diingatkan.",
+    "pillarsTitle": "Apa yang saya kerjakan",
+    "pillars": [
+      {
+        "title": "Optimasi Operasional",
+        "text": "Menata alur kerja, SOP, dan monitoring supaya operasional harian tidak bergantung pada ingatan orang."
+      },
+      {
+        "title": "Otomasi & Pelaporan",
+        "text": "Menghubungkan tools yang sudah dipakai dan mengotomasi pekerjaan berulang — laporan datang sendiri, bukan diminta."
+      },
+      {
+        "title": "Sistem AI Kustom",
+        "text": "Membangun asisten dan agen AI yang menangani tugas nyata: mencatat, memantau, merangkum, dan mengingatkan."
+      }
+    ],
+    "workTitle": "Proyek terpilih",
+    "workText": "Sistem nyata yang sudah berjalan, bukan konsep.",
+    "allWork": "Lihat semua proyek",
+    "blogTitle": "Tulisan terbaru",
+    "allPosts": "Lihat semua tulisan",
+    "aboutTitle": "Latar belakang",
+    "aboutText": "Saya bekerja di ranah operasional properti sewa di Bali, dan membangun sendiri sistem AI yang saya pakai sehari-hari. Kombinasi ini membuat saya tahu persis di mana operasional tersendat — dan bagaimana memperbaikinya."
+  },
+  "services": {
+    "title": "Layanan",
+    "intro": "Tiga cara saya bisa membantu — semuanya berangkat dari pengalaman operasional nyata, bukan teori.",
+    "problem": "Masalah yang diselesaikan",
+    "approach": "Pendekatan",
+    "outcome": "Hasil yang diharapkan",
+    "start": "Cara mulai",
+    "ctaTitle": "Punya tantangan operasional?",
+    "ctaText": "Ceritakan kondisi Anda. Saya akan bilang terus terang apakah saya bisa membantu atau tidak."
+  },
+  "work": {
+    "title": "Proyek",
+    "intro": "Sistem yang saya bangun dan pakai sendiri. Semua berjalan nyata, bukan demo.",
+    "context": "Konteks",
+    "problem": "Tantangan",
+    "built": "Yang dibangun",
+    "stack": "Teknologi",
+    "result": "Hasil",
+    "visit": "Kunjungi"
+  },
+  "blog": {
+    "title": "Blog",
+    "intro": "Catatan tentang operasional, otomasi, dan AI yang saya pakai sehari-hari.",
+    "readMore": "Baca selengkapnya",
+    "minRead": "menit baca",
+    "allTags": "Semua topik",
+    "empty": "Belum ada tulisan.",
+    "backToBlog": "Kembali ke blog"
+  },
+  "about": {
+    "title": "Tentang",
+    "intro": "Praktisi operasional properti di Bali yang membangun sistem AI sendiri.",
+    "backgroundTitle": "Latar belakang",
+    "backgroundText": "Saya menangani operasional properti sewa di Bali. Pekerjaan ini mengajarkan saya bahwa masalah terbesar bukan kurangnya usaha — tapi proses yang bergantung pada ingatan orang, laporan yang selalu terlambat, dan pekerjaan berulang yang menyita waktu.",
+    "approachTitle": "Cara saya bekerja",
+    "approachText": "Saya membangun sistem AI untuk menyelesaikan masalah itu, lalu memakainya sendiri setiap hari. Karena saya penggunanya, saya tahu mana yang benar-benar membantu dan mana yang hanya terlihat canggih.",
+    "skillsTitle": "Keahlian",
+    "skills": [
+      "Manajemen operasional properti sewa",
+      "Otomasi alur kerja & integrasi tools",
+      "Pengembangan agen & asisten AI",
+      "Otomasi pelaporan dan pencatatan",
+      "Integrasi data (Google Workspace, API, database)",
+      "Penyusunan SOP dan monitoring operasional"
+    ],
+    "ctaTitle": "Mari berdiskusi",
+    "ctaText": "Terbuka untuk kolaborasi, konsultasi, maupun peluang di bidang operasional dan otomasi."
+  },
+  "contact": {
+    "title": "Kontak",
+    "intro": "Kirim pesan — saya biasanya membalas dalam 1×24 jam.",
+    "formName": "Nama",
+    "formEmail": "Email",
+    "formMessage": "Pesan",
+    "formSubmit": "Kirim Pesan",
+    "formNote": "Formulir ini aman. Data Anda tidak dibagikan ke pihak ketiga.",
+    "emailLabel": "Email",
+    "whatsappLabel": "WhatsApp",
+    "locationLabel": "Lokasi",
+    "responseTime": "Waktu respons",
+    "responseValue": "Biasanya dalam 1×24 jam",
+    "success": "Terima kasih! Pesan Anda sudah terkirim."
+  },
+  "footer": {
+    "rights": "Hak cipta dilindungi.",
+    "builtWith": "Dibangun dengan Eleventy & Materialize"
+  }
+}
