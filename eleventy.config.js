@@ -106,6 +106,8 @@ async function writeSeoFiles(outDir) {
 export default function (eleventyConfig) {
   // Copy static assets straight through
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
+  // CMS admin interface (Sveltia / Decap CMS) — serves at /admin after build
+  eleventyConfig.addPassthroughCopy({ "admin": "admin" });
 
   // Useful filters
   eleventyConfig.addFilter("readableDate", (dateObj, locale = "id-ID") => {
