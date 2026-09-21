@@ -1,39 +1,59 @@
-# AI Learn Kun — Sveltia CMS Config
+# ---------------------------------------------------------------------------
+# AI Learn Kun - Decap CMS
+#
+# Auth: Netlify Identity + Git Gateway. Editors log in with email + password
+# (no GitHub account needed), and the CMS commits to the repo through the
+# gateway. Backend must be `git-gateway`: Sveltia CMS does not support it.
+# ---------------------------------------------------------------------------
 backend:
   name: git-gateway
   branch: master
-  repo: ailearnkun/AILearningKun-site
-  # Netlify Identity + Git Gateway — no token needed in file
 
-publish_mode: editorial_workflow
+# Uploaded images are written into the assets folder that Eleventy already
+# copies through to /assets, so no extra passthrough is needed.
 media_folder: "src/assets/img/uploads"
 public_folder: "/assets/img/uploads"
 
+# Set to `editorial_workflow` later if drafts should go through review first.
+publish_mode: simple
+
+site_url: https://ailearnkun.my.id
+
 collections:
-  - name: "blog"
-    label: "Blog Post"
+  # ---------------------------------------------------------------- Indonesian
+  - name: "blog_id"
+    label: "Artikel Blog (Indonesia)"
+    label_singular: "Artikel"
     folder: "src/blog/posts"
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    delete: true
+    slug: "{{slug}}"
     preview_path: "blog/{{slug}}"
-    editor:
-      preview: false
+    sortable_fields: ["date", "title"]
     fields:
-      - { label: "Judul", name: "title", widget: "string", required: true }
-      - { label: "Tanggal", name: "date", widget: "datetime", format: "YYYY-MM-DD", required: true }
-      - { label: "Bahasa", name: "lang", widget: "select", options: ["id", "en"], default: "id", required: true }
-      - { label: "Translation Key", name: "translationKey", widget: "string", required: false, hint: "Contoh: operasional-butuh-sistem" }
-      - { label: "Tags", name: "tags", widget: "list", default: ["operasional"], required: false }
-      - { label: "Deskripsi", name: "description", widget: "text", required: false, hint: "Ringkasan singkat untuk SEO" }
-      - { label: "Isi", name: "body", widget: "markdown", required: true }
+      - { label: "Judul", name: "title", widget: "string", hint: "Judul artikel yang tampil di halaman blog" }
+      - { label: "Tanggal", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "DD MMMM YYYY", time_format: false, picker_utc: true }
+      - { label: "Bahasa", name: "lang", widget: "hidden", default: "id" }
+      - { label: "Translation Key", name: "translationKey", widget: "string", required: false, hint: "Kunci penghubung ke versi bahasa Inggris. Pakai huruf kecil dan tanda hubung, contoh: operasional-butuh-sistem" }
+      - { label: "Tags", name: "tags", widget: "list", required: false, default: ["operasional"], hint: "Kata kunci topik, tekan Enter untuk menambah" }
+      - { label: "Deskripsi", name: "description", widget: "text", required: false, hint: "Ringkasan 1-2 kalimat untuk hasil pencarian Google" }
+      - { label: "Isi Artikel", name: "body", widget: "markdown" }
 
-  - name: "pages"
-    label: "Halaman (Tentang, Kontak, Layanan, Proyek)"
-    folder: "src"
-    files:
-      - file: "about.md"
-        name: "tentang"
-        label: "Tentang"
-        fields:
-          - { label: "Judul", name: "title", widget: "string", required: true }
-          - { label: "Isi", name: "body", widget: "markdown", required: true }
+  # ------------------------------------------------------------------- English
+  - name: "blog_en"
+    label: "Artikel Blog (English)"
+    label_singular: "Article"
+    folder: "src/en/blog/posts"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    preview_path: "en/blog/{{slug}}"
+    sortable_fields: ["date", "title"]
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "DD MMMM YYYY", time_format: false, picker_utc: true }
+      - { label: "Language", name: "lang", widget: "hidden", default: "en" }
+      - { label: "Translation Key", name: "translationKey", widget: "string", required: false, hint: "Must match the Indonesian post's key to link the two versions" }
+      - { label: "Tags", name: "tags", widget: "list", required: false }
+      - { label: "Description", name: "description", widget: "text", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
