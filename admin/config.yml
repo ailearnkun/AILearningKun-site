@@ -1,0 +1,39 @@
+# AI Learn Kun — Sveltia CMS Config
+backend:
+  name: git-gateway
+  branch: master
+  repo: ailearnkun/AILearningKun-site
+  # Netlify Identity + Git Gateway — no token needed in file
+
+publish_mode: editorial_workflow
+media_folder: "src/assets/img/uploads"
+public_folder: "/assets/img/uploads"
+
+collections:
+  - name: "blog"
+    label: "Blog Post"
+    folder: "src/blog/posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    preview_path: "blog/{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - { label: "Judul", name: "title", widget: "string", required: true }
+      - { label: "Tanggal", name: "date", widget: "datetime", format: "YYYY-MM-DD", required: true }
+      - { label: "Bahasa", name: "lang", widget: "select", options: ["id", "en"], default: "id", required: true }
+      - { label: "Translation Key", name: "translationKey", widget: "string", required: false, hint: "Contoh: operasional-butuh-sistem" }
+      - { label: "Tags", name: "tags", widget: "list", default: ["operasional"], required: false }
+      - { label: "Deskripsi", name: "description", widget: "text", required: false, hint: "Ringkasan singkat untuk SEO" }
+      - { label: "Isi", name: "body", widget: "markdown", required: true }
+
+  - name: "pages"
+    label: "Halaman (Tentang, Kontak, Layanan, Proyek)"
+    folder: "src"
+    files:
+      - file: "about.md"
+        name: "tentang"
+        label: "Tentang"
+        fields:
+          - { label: "Judul", name: "title", widget: "string", required: true }
+          - { label: "Isi", name: "body", widget: "markdown", required: true }

@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>AI Learn Kun - Admin</title>
+  <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg" />
+  <style>
+    body { font-family: system-ui, -apple-system, sans-serif; background: #0a192f; color: #e6f1ff; margin: 0; padding: 2rem; }
+    .header { max-width: 720px; margin: 0 auto 1rem; border-bottom: 1px solid #233554; padding-bottom: .75rem; }
+    a { color: #64b5f6; }
+    .logo { font-weight: 700; letter-spacing: .04em; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">AI Learn Kun - Admin</div>
+    <p style="opacity:.7;font-size:.9rem;margin:.25rem 0 0">Headless CMS (Sveltia) - login via Netlify Identity</p>
+  </div>
+  <script src="https://unpkg.com/@sveltia/cms@latest/dist/sveltia-cms.js"></script>
+  <script>
+    if (typeof CMS === 'undefined' && typeof DecapCMS !== 'undefined') CMS = DecapCMS;
+  </script>
+</body>
+</html>
