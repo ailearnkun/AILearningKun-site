@@ -37,7 +37,7 @@ collections:
       - { label: "Translation Key", name: "translationKey", widget: "string", required: false, hint: "Kunci penghubung ke versi bahasa Inggris. Pakai huruf kecil dan tanda hubung, contoh: operasional-butuh-sistem" }
       - { label: "Tags", name: "tags", widget: "list", required: false, default: ["operasional"], hint: "Kata kunci topik, tekan Enter untuk menambah" }
       - { label: "Deskripsi", name: "description", widget: "text", required: false, hint: "Ringkasan 1-2 kalimat untuk hasil pencarian Google" }
-      - { label: "Isi Artikel", name: "body", widget: "markdown" }
+      - { label: "Isi Artikel", name: "body", widget: "markdown", modes: ["rich_text", "raw"], buttons: ["bold", "italic", "code", "link", "heading-two", "heading-three", "quote", "bulleted-list", "numbered-list"], hint: "Tombol di toolbar bisa mengalihkan antara mode tulis biasa (rich text) dan mode teks markdown mentah (raw). Kalau menempel dari sumber markdown, pakai mode raw." }
 
   # ------------------------------------------------------------------- English
   - name: "blog_en"
@@ -56,4 +56,4 @@ collections:
       - { label: "Translation Key", name: "translationKey", widget: "string", required: false, hint: "Must match the Indonesian post's key to link the two versions" }
       - { label: "Tags", name: "tags", widget: "list", required: false }
       - { label: "Description", name: "description", widget: "text", required: false }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Body", name: "body", widget: "markdown", modes: ["rich_text", "raw"], buttons: ["bold", "italic", "code", "link", "heading-two", "heading-three", "quote", "bulleted-list", "numbered-list"], hint: "The toolbar toggle switches between normal writing (rich text) and raw markdown. Use raw when pasting from a markdown source." }
