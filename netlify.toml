@@ -28,15 +28,15 @@
 
 # ---------------------------------------------------------------------------
 # CMS admin (/admin) — relaxed CSP.
-# Sveltia CMS loads its bundle from unpkg and talks to Netlify Identity and the
-# GitHub API, so the site-wide first-party-only policy above would block it.
-# This rule is intentionally scoped to /admin so the public site keeps the
-# strict policy.
+# Decap CMS loads its bundle from unpkg, talks to Netlify Identity and the
+# GitHub API, and compiles its YAML config with eval() — so it needs
+# 'unsafe-eval' in script-src. This rule is intentionally scoped to /admin
+# so the public site keeps the strict first-party-only policy.
 # ---------------------------------------------------------------------------
 [[headers]]
   for = "/admin/*"
   [headers.values]
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://identity.netlify.com; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: blob: https:; connect-src 'self' https://api.netlify.com https://identity.netlify.com https://api.github.com https://raw.githubusercontent.com https://unpkg.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com https://identity.netlify.com; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: blob: https:; connect-src 'self' https://api.netlify.com https://identity.netlify.com https://api.github.com https://raw.githubusercontent.com https://unpkg.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
     X-Frame-Options = "DENY"
 
 # Long cache for static assets
