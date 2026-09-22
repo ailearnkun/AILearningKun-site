@@ -54,3 +54,12 @@
 # ---------------------------------------------------------------------------
 # Redirects: keep the old single-page URL working
 # ---------------------------------------------------------------------------
+
+# NOTE on Netlify Identity invite links:
+# The invite/recovery/confirmation tokens live in the URL *fragment*
+# (https://ailearnkun.my.id/#invite_token=...). The fragment is never sent to
+# the server, so a netlify.toml redirect CANNOT see it. The token is therefore
+# handled client-side: a tiny script in the base layout detects an identity
+# token in the hash and forwards the browser to /admin (where the Decap /
+# identity widget consumes it). See the identity-redirect snippet in
+# src/_includes/layouts/base.njk.

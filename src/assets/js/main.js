@@ -3,6 +3,37 @@
 (function () {
   "use strict";
 
+  // ---------------------------------------------------------------------
+  // Netlify Identity token forwarding.
+  //
+  // Invite / recovery / confirmation / email-change emails link to the site
+  // ROOT with the token in the URL fragment, e.g.
+  //   https://ailearnkun.my.id/#invite_token=abc123
+  // The fragment never reaches the server, so this runs client-side: if an
+  // identity token is present in the hash, forward the browser to /admin
+  // (keeping the token) where the Decap CMS / identity widget consumes it.
+  // This is a no-op on normal visits because there is no identity token.
+  // ---------------------------------------------------------------------
+  (function forwardIdentityToken() {
+    var hash = window.location.hash || "";
+    if (hash.indexOf("#") !== 0) return;
+    var params;
+    try {
+      params = new URLSearchParams(hash.slice(1));
+    } catch (e) {
+      return;
+    }
+    var keys = ["invite_token", "recovery_token", "confirmation_token", "email_change_token"];
+    for (var i = 0; i < keys.length; i++) {
+      if (params.has(keys[i])) {
+        // Already on the admin page? Let the widget there handle it.
+        if (window.location.pathname.indexOf("/admin") === 0) return;
+        window.location.replace("/admin/" + hash);
+        return;
+      }
+    }
+  })();
+
   // Mobile navigation toggle
   var toggle = document.querySelector(".nav__toggle");
   var mobile = document.querySelector(".nav__mobile");
