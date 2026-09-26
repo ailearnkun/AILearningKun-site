@@ -27,6 +27,8 @@ npm run serve        # preview lokal dengan live reload (http://localhost:8080)
 npm run build        # build produksi ke _site/ (minify + verifikasi bersih)
 npm run build:dev    # build tanpa minify (untuk debug)
 npm run test:build   # build + gerbang verifikasi lengkap (wajib lulus sebelum deploy)
+npm run test         # unit test server preview (node --test)
+npm run preview:serve    # sajikan hasil build produksi di lokal (http://127.0.0.1:8080)
 npm run size         # laporkan berat hasil build
 npm run deploy:preview   # deploy draft (URL sementara, situs live tidak berubah)
 npm run deploy:prod      # deploy ke https://ailearnkun.my.id

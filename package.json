@@ -10,6 +10,8 @@
     "serve": "eleventy --serve --port=8080",
     "clean": "rm -rf _site",
     "test:build": "npm run build && node scripts/check-build.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "preview:serve": "node scripts/preview-server.mjs",
     "size": "node scripts/report-size.mjs",
     "deploy:preview": "npx netlify deploy --dir=_site --site=e91e241e-13d2-4326-a48d-fc86da5d4bcf",
     "deploy:prod": "npx netlify deploy --prod --dir=_site --site=e91e241e-13d2-4326-a48d-fc86da5d4bcf"
