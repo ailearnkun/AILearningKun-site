@@ -111,6 +111,8 @@
     "formNote": "This form is secure. Your data is never shared with third parties.",
     "emailLabel": "Email",
     "whatsappLabel": "WhatsApp",
+    "waCta": "Chat Directly on WhatsApp",
+    "waPrefill": "Hi Kun, I'd like to ask about your automation/AI services.",
     "locationLabel": "Location",
     "responseTime": "Response time",
     "responseValue": "Usually within 24 hours",
@@ -118,6 +120,7 @@
   },
   "footer": {
     "rights": "All rights reserved.",
-    "builtWith": "Built with Eleventy"
+    "builtWith": "Built with Eleventy",
+    "privacy": "Privacy Policy"
   }
 }

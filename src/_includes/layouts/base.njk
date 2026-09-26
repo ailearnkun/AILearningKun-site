@@ -22,7 +22,12 @@
   <meta property="og:description" content="{{ description or site.description[lang or 'id'] }}" />
   <meta property="og:url" content="{{ canonical }}" />
   <meta property="og:site_name" content="{{ site.brand }}" />
+  <meta property="og:image" content="{{ site.url }}/assets/img/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="{{ site.brand }} — {{ site.tagline[lang or 'id'] }}" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="{{ site.url }}/assets/img/og-default.jpg" />
 
   {# Fonts: self-hosted, preloaded so the first paint is not font-blocked #}
   <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
@@ -32,6 +37,9 @@
 
   <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml" />
   <meta name="theme-color" content="#0a192f" />
+
+  {# Structured data (JSON-LD): person + the business it represents #}
+  <script type="application/ld+json">{{ jsonld | safe }}</script>
 </head>
 <body>
   <a class="skip-link" href="#main">{{ 'Lewati ke konten' if (lang or 'id') == 'id' else 'Skip to content' }}</a>
@@ -45,5 +53,8 @@
   {% include "partials/footer.njk" %}
 
   <script src="/assets/js/main.js" defer></script>
+
+  {# GoatCounter: self-hosted, cookie-less analytics #}
+  <script data-goatcounter="https://analitik.ailearnkun.my.id/count" async src="https://analitik.ailearnkun.my.id/count.js"></script>
 </body>
 </html>

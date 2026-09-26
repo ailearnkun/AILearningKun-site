@@ -26,7 +26,7 @@
 
     <div class="footer__bottom">
       <span>&copy; {% year %} {{ site.brand }}. {{ t.footer.rights }}</span>
-      <span>{{ t.footer.builtWith }}</span>
+      <span>{{ t.footer.builtWith }} · <a href="{{ site.privacyUrl[lang or 'id'] }}">{{ t.footer.privacy }}</a></span>
     </div>
   </div>
 </footer>

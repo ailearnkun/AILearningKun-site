@@ -527,6 +527,16 @@ table { border-collapse: collapse; width: 100%; }
 }
 .contact-item dd { margin: 0; font-weight: 500; }
 
+/* WhatsApp CTA on the contact page */
+.btn--whatsapp {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 1.25rem;
+  background: #1f7a43;
+}
+.btn--whatsapp:hover { background: #176537; transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.btn--whatsapp .icon { margin-right: 0.35rem; }
+
 /* --------------------------------------------------------------------------
    Footer
    -------------------------------------------------------------------------- */

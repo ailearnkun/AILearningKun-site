@@ -133,8 +133,46 @@ export default function (eleventyConfig) {
     (arr || []).slice().sort((a, b) => new Date(b.date) - new Date(a.date))
   );
 
+  // URL-encode querystring values (e.g. WhatsApp prefill text)
+  eleventyConfig.addFilter("url_encode", (s) => encodeURIComponent(s || ""));
+
   // Year for the footer
   eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
+
+  // Structured data (JSON-LD) for the base layout: the person behind the site
+  // plus the business they represent. Built here so every page gets consistent
+  // schema without duplicating it in templates.
+  eleventyConfig.addShortcode("jsonld", () =>
+    JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": `${"https://ailearnkun.my.id"}/#person`,
+          name: "Kun Tegar Jaya Ibrahim Haryono",
+          alternateName: "Kun",
+          jobTitle: "Praktisi Operasional Properti & Konsultan Otomasi",
+          url: "https://ailearnkun.my.id",
+          email: "mailto:ai.learn.kun@gmail.com",
+          sameAs: ["https://github.com/ailearnkun"],
+        },
+        {
+          "@type": "ProfessionalService",
+          "@id": "https://ailearnkun.my.id/#business",
+          name: "AI Learn Kun",
+          description:
+            "Optimasi operasional properti dan bisnis, ditenagai sistem AI: pelaporan otomatis, pencatatan keuangan, dan asisten AI.",
+          url: "https://ailearnkun.my.id",
+          email: "ai.learn.kun@gmail.com",
+          telephone: "+6285111578784",
+          image: "https://ailearnkun.my.id/assets/img/og-default.jpg",
+          areaServed: "Indonesia",
+          priceRange: "$$",
+          founder: { "@id": "https://ailearnkun.my.id/#person" },
+        },
+      ],
+    })
+  );
 
   eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
 

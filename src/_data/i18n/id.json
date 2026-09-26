@@ -111,6 +111,8 @@
     "formNote": "Formulir ini aman. Data Anda tidak dibagikan ke pihak ketiga.",
     "emailLabel": "Email",
     "whatsappLabel": "WhatsApp",
+    "waCta": "Chat Langsung via WhatsApp",
+    "waPrefill": "Halo Kun, saya ingin bertanya soal layanan otomasi/AI.",
     "locationLabel": "Lokasi",
     "responseTime": "Waktu respons",
     "responseValue": "Biasanya dalam 1×24 jam",
@@ -118,6 +120,7 @@
   },
   "footer": {
     "rights": "Hak cipta dilindungi.",
-    "builtWith": "Dibangun dengan Eleventy"
+    "builtWith": "Dibangun dengan Eleventy",
+    "privacy": "Kebijakan Privasi"
   }
 }

@@ -117,7 +117,16 @@ for (const page of pages) {
   inlineStyles += (html.match(/\sstyle="/g) || []).length;
 
   // <script> with a body breaks `script-src 'self'` without a nonce/hash.
-  inlineScripts += (html.match(/<script(?![^>]*\ssrc=)[^>]*>[\s\S]*?<\/script>/g) || []).length;
+  // Exceptions: JSON-LD (application/ld+json) is data, not executable code.
+  for (const tag of html.matchAll(/<script[\s\S]*?<\/script>/g)) {
+    const s = tag[0];
+    if (/src=/.test(s)) continue;            // external script, fine
+    if (/type="application\/ld\+json"/.test(s)) continue;  // structured data
+    if (/type="application\/json"/.test(s)) continue;       // structured data
+    // Has a body that is not whitespace-only
+    const body = s.replace(/<script[^>]*>/, "").replace(/<\/script>/, "").trim();
+    if (body) inlineScripts++;
+  }
 
   // target="_blank" without rel=noopener is a reverse-tabnabbing vector.
   for (const tag of html.matchAll(/<a\b[^>]*target="_blank"[^>]*>/g)) {

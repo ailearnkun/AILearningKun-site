@@ -50,6 +50,9 @@ description: "Kirim pesan — saya biasanya membalas dalam 1×24 jam."
 
       <!-- DETAILS -->
       <div>
+        {% if site.whatsapp %}
+        <a class="btn btn--primary btn--whatsapp" href="https://wa.me/{{ site.whatsapp }}?text={{ t.contact.waPrefill | url_encode }}" target="_blank" rel="noopener">{{ icon("whatsapp", 20) }} {{ t.contact.waCta }}</a>
+        {% endif %}
         <div class="contact-card">
           <dl class="m-0">
             <div class="contact-item">
