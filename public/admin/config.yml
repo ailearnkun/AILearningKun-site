@@ -1,0 +1,37 @@
+backend:
+  name: github
+  repo: ailearnkun/AILearningKun-site
+  branch: main
+  site_domain: ailearnkun.my.id
+
+media_folder: "public/assets/img"
+public_folder: "/assets/img"
+
+collections:
+  - name: "blog"
+    label: "Blog (Indonesia)"
+    folder: "src/content/blog"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD" }
+      - { label: "Language", name: "lang", widget: "hidden", default: "id" }
+      - { label: "Translation Key", name: "translationKey", widget: "string" }
+      - { label: "Tags", name: "tags", widget: "list" }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "blog_en"
+    label: "Blog (English)"
+    folder: "src/content/en/blog"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD" }
+      - { label: "Language", name: "lang", widget: "hidden", default: "en" }
+      - { label: "Translation Key", name: "translationKey", widget: "string" }
+      - { label: "Tags", name: "tags", widget: "list" }
+      - { label: "Body", name: "body", widget: "markdown" }

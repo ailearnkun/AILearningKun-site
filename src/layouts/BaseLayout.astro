@@ -1,0 +1,37 @@
+---
+// Base Layout — HTML shell with SEO, fonts, and analytics
+export interface Props {
+  title: string;
+  description?: string;
+  lang?: string;
+  ogImage?: string;
+}
+
+const { title, description, lang = 'id' } = Astro.props;
+const site = {
+  brand: 'AI Learn Kun',
+  url: 'https://ailearnkun.my.id',
+  tagline: { id: 'Optimasi operasional properti & bisnis, ditenagai sistem AI yang saya bangun sendiri.', en: 'Property and business operations optimization, powered by AI systems I build myself.' },
+};
+const pageTitle = `${title} | ${site.brand}`;
+---
+<!DOCTYPE html>
+<html lang={lang}>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{pageTitle}</title>
+  <meta name="description" content={description || site.tagline[lang]} />
+  <meta property="og:title" content={pageTitle} />
+  <meta property="og:description" content={description || site.tagline[lang]} />
+  <meta property="og:url" content={site.url + Astro.url.pathname} />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg" />
+  <link rel="stylesheet" href="/assets/css/style.css" />
+  <!-- Preload font -->
+  <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+</head>
+<body>
+  <slot />
+</body>
+</html>

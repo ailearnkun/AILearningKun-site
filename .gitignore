@@ -1,22 +1,4 @@
-# Dependencies
+node_modules/\ndist/\n.env*
+.astro/
+dist/
 node_modules/
-
-# Build output
-_site/
-
-# Netlify
-.netlify/
-
-# Logs
-*.log
-npm-debug.log*
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Editors
-.vscode/
-.idea/
-*.swp
-form-handler/oauth-config.json

@@ -1,24 +1,28 @@
 {
-  "name": "ailearnkun-site",
+  "name": "ailearningkun-astro",
   "version": "1.0.0",
-  "private": true,
-  "description": "AI Learn Kun — operations optimization powered by self-built AI systems",
-  "license": "MIT",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "build": "npm run clean && NODE_ENV=production eleventy",
-    "build:dev": "npm run clean && eleventy",
-    "serve": "eleventy --serve --port=8080",
-    "clean": "rm -rf _site",
-    "test:build": "npm run build && node scripts/check-build.mjs",
-    "test": "node --test tests/*.test.mjs",
-    "preview:serve": "node scripts/preview-server.mjs",
-    "size": "node scripts/report-size.mjs",
-    "deploy:preview": "npx netlify deploy --dir=_site --site=e91e241e-13d2-4326-a48d-fc86da5d4bcf",
-    "deploy:prod": "npx netlify deploy --prod --dir=_site --site=e91e241e-13d2-4326-a48d-fc86da5d4bcf"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "clean": "rm -rf dist"
   },
-  "devDependencies": {
-    "@11ty/eleventy": "^3.1.6",
-    "@fontsource-variable/inter": "^5.3.0",
-    "html-minifier-terser": "^7.2.0"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ailearnkun/AILearningKun-site.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/ailearnkun/AILearningKun-site/issues"
+  },
+  "homepage": "https://github.com/ailearnkun/AILearningKun-site#readme",
+  "dependencies": {
+    "@astrojs/mdx": "^8.0.2",
+    "astro": "^7.3.5"
   }
 }

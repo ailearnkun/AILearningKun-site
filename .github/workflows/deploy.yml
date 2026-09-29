@@ -1,0 +1,34 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - name: Install rsync
+        run: sudo apt-get update && sudo apt-get install -y rsync
+      - name: Setup SSH key
+        env:
+          SSH_KEY: '${{ secrets.DEPLOY_SSH_KEY }}'
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_KEY" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -H 43.156.43.247 >> ~/.ssh/known_hosts 2>/dev/null
+      - name: Deploy to VPS
+        run: |
+          rsync -az --delete --exclude '.env' dist/ deploy@43.156.43.247:/var/www/ailearnkun/

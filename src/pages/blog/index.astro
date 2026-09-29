@@ -1,0 +1,30 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+const t = {"lang": "id", "langLabel": "Bahasa Indonesia", "switchTo": "English", "switchUrl": "/en/", "nav": {"home": "Beranda", "services": "Layanan", "work": "Proyek", "blog": "Blog", "about": "Tentang", "contact": "Kontak"}, "cta": {"primary": "Hubungi Saya", "secondary": "Lihat Proyek", "consult": "Diskusi Gratis"}, "home": {"heroLabel": "Operasional \u00d7 AI", "heroTitle": "Operasional yang berjalan lebih rapi, ditenagai AI", "heroText": "Saya membantu properti dan bisnis merapikan operasionalnya lewat sistem yang saya bangun sendiri \u2014 dari pencatatan otomatis sampai pelaporan yang jalan tanpa diingatkan.", "pillarsTitle": "Apa yang saya kerjakan", "pillars": [{"icon": "settings", "title": "Optimasi Operasional", "text": "Menata alur kerja, SOP, dan monitoring supaya operasional harian tidak bergantung pada ingatan orang."}, {"icon": "chart", "title": "Otomasi & Pelaporan", "text": "Menghubungkan tools yang sudah dipakai dan mengotomasi pekerjaan berulang \u2014 laporan datang sendiri, bukan diminta."}, {"icon": "cpu", "title": "Sistem AI Kustom", "text": "Membangun asisten dan agen AI yang menangani tugas nyata: mencatat, memantau, merangkum, dan mengingatkan."}], "workTitle": "Proyek terpilih", "workText": "Sistem nyata yang sudah berjalan, bukan konsep.", "allWork": "Lihat semua proyek", "blogTitle": "Tulisan terbaru", "allPosts": "Lihat semua tulisan", "aboutTitle": "Latar belakang", "aboutText": "Saya bekerja di ranah operasional properti sewa di Bali, dan membangun sendiri sistem AI yang saya pakai sehari-hari. Kombinasi ini membuat saya tahu persis di mana operasional tersendat \u2014 dan bagaimana memperbaikinya."}, "services": {"title": "Layanan", "intro": "Tiga cara saya bisa membantu \u2014 semuanya berangkat dari pengalaman operasional nyata, bukan teori.", "problem": "Masalah yang diselesaikan", "approach": "Pendekatan", "outcome": "Hasil yang diharapkan", "start": "Cara mulai", "ctaTitle": "Punya tantangan operasional?", "ctaText": "Ceritakan kondisi Anda. Saya akan bilang terus terang apakah saya bisa membantu atau tidak."}, "work": {"title": "Proyek", "intro": "Sistem yang saya bangun dan pakai sendiri. Semua berjalan nyata, bukan demo.", "context": "Konteks", "problem": "Tantangan", "built": "Yang dibangun", "stack": "Teknologi", "result": "Hasil", "visit": "Kunjungi"}, "blog": {"title": "Blog", "intro": "Catatan tentang operasional, otomasi, dan AI yang saya pakai sehari-hari.", "readMore": "Baca selengkapnya", "minRead": "menit baca", "allTags": "Semua topik", "empty": "Belum ada tulisan.", "backToBlog": "Kembali ke blog", "searchLabel": "Cari tulisan", "searchPlaceholder": "Cari berdasarkan judul, topik, atau kata kunci...", "searchNoResults": "Tidak ada tulisan yang cocok dengan", "searchResultsOne": "1 tulisan ditemukan", "searchResultsMany": "tulisan ditemukan", "searchClear": "Hapus pencarian", "searchHint": "Tekan Esc untuk menghapus"}, "about": {"title": "Tentang", "intro": "Praktisi operasional properti di Bali yang membangun sistem AI sendiri.", "backgroundTitle": "Latar belakang", "backgroundText": "Saya menangani operasional properti sewa di Bali. Pekerjaan ini mengajarkan saya bahwa masalah terbesar bukan kurangnya usaha \u2014 tapi proses yang bergantung pada ingatan orang, laporan yang selalu terlambat, dan pekerjaan berulang yang menyita waktu.", "approachTitle": "Cara saya bekerja", "approachText": "Saya membangun sistem AI untuk menyelesaikan masalah itu, lalu memakainya sendiri setiap hari. Karena saya penggunanya, saya tahu mana yang benar-benar membantu dan mana yang hanya terlihat canggih.", "skillsTitle": "Keahlian", "skills": ["Manajemen operasional properti sewa", "Otomasi alur kerja & integrasi tools", "Pengembangan agen & asisten AI", "Otomasi pelaporan dan pencatatan", "Integrasi data (Google Workspace, API, database)", "Penyusunan SOP dan monitoring operasional"], "ctaTitle": "Mari berdiskusi", "ctaText": "Terbuka untuk kolaborasi, konsultasi, maupun peluang di bidang operasional dan otomasi."}, "contact": {"title": "Kontak", "intro": "Kirim pesan \u2014 saya biasanya membalas dalam 1\u00d724 jam.", "formName": "Nama", "formEmail": "Email", "formMessage": "Pesan", "formSubmit": "Kirim Pesan", "formNote": "Formulir ini aman. Data Anda tidak dibagikan ke pihak ketiga.", "emailLabel": "Email", "whatsappLabel": "WhatsApp", "waCta": "Chat Langsung via WhatsApp", "waPrefill": "Halo Kun, saya ingin bertanya soal layanan otomasi/AI.", "locationLabel": "Lokasi", "responseTime": "Waktu respons", "responseValue": "Biasanya dalam 1\u00d724 jam", "success": "Terima kasih! Pesan Anda sudah terkirim."}, "footer": {"rights": "Hak cipta dilindungi.", "builtWith": "Dibangun dengan Eleventy", "privacy": "Kebijakan Privasi"}};
+const posts = (await getCollection('blog')).sort(
+  (a,b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+---
+
+<BaseLayout title={t.blog.title} description={t.blog.intro} lang="id" altUrl="/en/blog/">
+  <div class="wrap section">
+    <h1>{t.blog.title}</h1>
+    <p>{t.blog.intro}</p>
+    {posts.length > 0 ? (
+      <div class="grid grid--3">
+        {posts.map(post => (
+          <a class="card card--link" href={"/blog/" + post.id + "/"}>
+            <h3>{post.data.title}</h3>
+            <p>{post.data.description}</p>
+            <div class="card__meta">
+              <span class="muted">{post.data.date.toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    ) : (
+      <p class="muted">{t.blog.empty}</p>
+    )}
+  </div>
+</BaseLayout>
