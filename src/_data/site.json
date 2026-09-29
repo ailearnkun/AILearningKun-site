@@ -19,12 +19,37 @@
     "en": "Kun — a property operations practitioner in Bali who builds AI systems to make operations more efficient, measurable, and consistent."
   },
   "nav": [
-    { "key": "home", "url": "/", "urlEn": "/en/" },
-    { "key": "services", "url": "/layanan/", "urlEn": "/en/services/" },
-    { "key": "work", "url": "/proyek/", "urlEn": "/en/work/" },
-    { "key": "blog", "url": "/blog/", "urlEn": "/en/blog/" },
-    { "key": "about", "url": "/tentang/", "urlEn": "/en/about/" },
-    { "key": "contact", "url": "/kontak/", "urlEn": "/en/contact/" }
+    {
+      "key": "home",
+      "url": "/",
+      "urlEn": "/en/"
+    },
+    {
+      "key": "services",
+      "url": "/layanan/",
+      "urlEn": "/en/services/"
+    },
+    {
+      "key": "work",
+      "url": "/proyek/",
+      "urlEn": "/en/work/"
+    },
+    {
+      "key": "blog",
+      "url": "https://blog.ailearnkun.my.id/",
+      "urlEn": "https://blog.ailearnkun.my.id/",
+      "external": true
+    },
+    {
+      "key": "about",
+      "url": "/tentang/",
+      "urlEn": "/en/about/"
+    },
+    {
+      "key": "contact",
+      "url": "/kontak/",
+      "urlEn": "/en/contact/"
+    }
   ],
   "social": {
     "github": "https://github.com/ailearnkun",
