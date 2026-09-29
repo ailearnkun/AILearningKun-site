@@ -1,7 +1,7 @@
 backend:
   name: github
   repo: ailearnkun/AILearningKun-site
-  branch: main
+  branch: master
   site_domain: ailearnkun.my.id
 
 media_folder: "public/assets/img"
