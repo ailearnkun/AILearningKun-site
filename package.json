@@ -23,6 +23,7 @@
   "homepage": "https://github.com/ailearnkun/AILearningKun-site#readme",
   "dependencies": {
     "@astrojs/mdx": "^8.0.2",
+    "@astrojs/sitemap": "^3.7.4",
     "astro": "^7.3.5"
   }
 }

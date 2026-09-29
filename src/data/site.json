@@ -36,9 +36,8 @@
     },
     {
       "key": "blog",
-      "url": "https://blog.ailearnkun.my.id/",
-      "urlEn": "https://blog.ailearnkun.my.id/",
-      "external": true
+      "url": "/blog/",
+      "urlEn": "/en/blog/"
     },
     {
       "key": "about",

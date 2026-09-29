@@ -9,14 +9,32 @@ export interface Props {
 
 const { post, lang = 'id' } = Astro.props;
 const { Content } = await render(post);
+const siteUrl = 'https://ailearnkun.my.id';
+const altUrl = lang === 'id' ? `/en/blog/${post.id}/` : `/blog/${post.id}/`;
 const backUrl = lang === 'id' ? '/blog/' : '/en/blog/';
 const backLabel = lang === 'id' ? 'Kembali ke blog' : 'Back to blog';
 const dateStr = post.data.date.toLocaleDateString(lang === 'id' ? 'id-ID' : 'en-US', {
   year: 'numeric', month: 'long', day: 'numeric'
 });
+const blogPostingSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.date.toISOString(),
+  ...(post.data.updated ? { dateModified: post.data.updated.toISOString() } : {}),
+  author: {
+    '@type': 'Person',
+    name: 'Kun',
+    url: siteUrl + '/',
+  },
+  url: siteUrl + Astro.url.pathname,
+  mainEntityOfPage: siteUrl + Astro.url.pathname,
+  inLanguage: lang,
+};
 ---
 
-<BaseLayout title={post.data.title} description={post.data.description} lang={lang}>
+<BaseLayout title={post.data.title} description={post.data.description} lang={lang} altUrl={altUrl} jsonLd={blogPostingSchema}>
   <article class="post wrap">
     <p><a href={backUrl}>&larr; {backLabel}</a></p>
     <h1>{post.data.title}</h1>

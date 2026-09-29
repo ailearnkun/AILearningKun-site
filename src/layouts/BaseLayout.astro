@@ -1,37 +1,180 @@
 ---
-// Base Layout — HTML shell with SEO, fonts, and analytics
+// Base Layout — HTML shell with SEO, nav, footer, fonts, and analytics
+import siteData from '@/data/site.json';
+
 export interface Props {
   title: string;
   description?: string;
   lang?: string;
+  altUrl?: string;
   ogImage?: string;
+  jsonLd?: object;
 }
 
-const { title, description, lang = 'id' } = Astro.props;
-const site = {
-  brand: 'AI Learn Kun',
-  url: 'https://ailearnkun.my.id',
-  tagline: { id: 'Optimasi operasional properti & bisnis, ditenagai sistem AI yang saya bangun sendiri.', en: 'Property and business operations optimization, powered by AI systems I build myself.' },
+const { title, description, lang = 'id', altUrl, jsonLd } = Astro.props;
+
+const i18n = {
+  id: {
+    switchTo: 'English',
+    nav: { home: 'Beranda', services: 'Layanan', work: 'Proyek', blog: 'Blog', about: 'Tentang', contact: 'Kontak' },
+    skipLink: 'Lewati ke konten',
+    footer: { rights: 'Hak cipta dilindungi.', builtWith: 'Dibangun dengan Astro', privacy: 'Kebijakan Privasi' },
+  },
+  en: {
+    switchTo: 'Bahasa Indonesia',
+    nav: { home: 'Home', services: 'Services', work: 'Work', blog: 'Blog', about: 'About', contact: 'Contact' },
+    skipLink: 'Skip to content',
+    footer: { rights: 'All rights reserved.', builtWith: 'Built with Astro', privacy: 'Privacy Policy' },
+  },
 };
-const pageTitle = `${title} | ${site.brand}`;
+
+const t = i18n[lang] || i18n.id;
+const pageTitle = title && title !== siteData.brand ? `${title} | ${siteData.brand}` : siteData.brand;
+const here = Astro.url.pathname.replace(/\/$/, '') || '/';
 ---
+
 <!DOCTYPE html>
 <html lang={lang}>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{pageTitle}</title>
-  <meta name="description" content={description || site.tagline[lang]} />
-  <meta property="og:title" content={pageTitle} />
-  <meta property="og:description" content={description || site.tagline[lang]} />
-  <meta property="og:url" content={site.url + Astro.url.pathname} />
+  <meta name="description" content={description || siteData.description[lang]} />
+  <meta name="author" content={siteData.owner} />
+
+  <link rel="canonical" href={siteData.url + here} />
+
+  {altUrl && (
+    <link rel="alternate" hreflang={lang === 'id' ? 'en' : 'id'} href={siteData.url + altUrl} />
+  )}
+  <link rel="alternate" hreflang={lang} href={siteData.url + here} />
+
   <meta property="og:type" content="website" />
-  <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg" />
-  <link rel="stylesheet" href="/assets/css/style.css" />
-  <!-- Preload font -->
+  <meta property="og:title" content={pageTitle} />
+  <meta property="og:description" content={description || siteData.description[lang]} />
+  <meta property="og:url" content={siteData.url + here} />
+  <meta property="og:site_name" content={siteData.brand} />
+  <meta property="og:image" content={`${siteData.url}/assets/img/og-default.jpg`} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content={`${siteData.brand} — ${siteData.tagline[lang]}`} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content={`${siteData.url}/assets/img/og-default.jpg`} />
+
+  {jsonLd && (
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
+  )}
+
   <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/assets/css/style.css" />
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml" />
+  <meta name="theme-color" content="#0a192f" />
 </head>
 <body>
-  <slot />
+  <a class="skip-link" href="#main">{t.skipLink}</a>
+
+  <nav class="nav">
+    <div class="wrap nav__inner">
+      <a class="nav__brand" href={lang === 'id' ? '/' : '/en/'}>
+        AI Learn <span>Kun</span>
+      </a>
+
+      <ul class="nav__links">
+        {siteData.nav.map((item) => {
+          const url = lang === 'id' ? item.url : item.urlEn;
+          const isCurrent = here === url;
+          return (
+            <li>
+              <a href={url} aria-current={isCurrent ? 'page' : undefined}>
+                {t.nav[item.key]}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+
+      <div class="nav__right">
+        <a class="lang-switch" href={altUrl || (lang === 'id' ? '/en/' : '/')} title={t.switchTo}>
+          <svg class="icon icon--globe" width="14" height="14" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
+               stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18Z"/>
+          </svg>
+          <span>{t.switchTo}</span>
+        </a>
+        <button class="nav__toggle" type="button" aria-label="Menu" aria-expanded="false">
+          <svg class="icon icon--menu" width="20" height="20" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
+               stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <path d="M3.5 7h17M3.5 12h17M3.5 17h17"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="nav__mobile">
+      <ul>
+        {siteData.nav.map((item) => {
+          const url = lang === 'id' ? item.url : item.urlEn;
+          return (
+            <li>
+              <a href={url}>{t.nav[item.key]}</a>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main">
+    <slot />
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__brand">{siteData.brand}</div>
+          <p class="mb-0 measure">{siteData.tagline[lang]}</p>
+        </div>
+
+        <div>
+          <ul class="footer__links">
+            {siteData.nav.map((item) => {
+              const url = lang === 'id' ? item.url : item.urlEn;
+              return (
+                <li>
+                  <a href={url}>{t.nav[item.key]}</a>
+                </li>
+              );
+            })}
+          </ul>
+
+          {siteData.social.github && (
+            <p class="mb-0 mt-1">
+              <a href={siteData.social.github} target="_blank" rel="noopener">
+                <svg class="icon icon--github" width="16" height="16" viewBox="0 0 24 24"
+                     fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
+                     stroke-linejoin="round" aria-hidden="true" focusable="false">
+                  <path d="M9 19c-4.3 1.3-4.3-2.2-6-2.7m12 5.4v-3.6c0-1 .1-1.4-.5-2 2.3-.3 4.7-1.1 4.7-5.1a4 4 0 0 0-1.1-2.8 3.7 3.7 0 0 0-.1-2.8s-.9-.3-2.9 1.1a10 10 0 0 0-5.2 0C8.9 4.1 8 4.4 8 4.4a3.7 3.7 0 0 0-.1 2.8A4 4 0 0 0 6.8 10c0 4 2.4 4.8 4.7 5.1-.6.6-.6 1.2-.5 2V21"/>
+                </svg>
+                {' '}GitHub
+              </a>
+            </p>
+          )}
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <span>&copy; {new Date().getFullYear()} {siteData.brand}. {t.footer.rights}</span>
+        <span>{t.footer.builtWith} &middot; <a href={siteData.privacyUrl[lang]}>{t.footer.privacy}</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/main.js" defer></script>
+
+  <script data-goatcounter="https://analitik.ailearnkun.my.id/count" async
+          src="https://analitik.ailearnkun.my.id/count.js"></script>
 </body>
 </html>

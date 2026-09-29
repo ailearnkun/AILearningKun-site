@@ -1,0 +1,63 @@
+---
+// Nav component — site-wide navigation with i18n
+import siteData from '@/data/site.json';
+
+export interface Props {
+  lang?: string;
+  altUrl?: string;
+}
+
+const { lang = 'id', altUrl = '/en/' } = Astro.props;
+
+const i18n = {
+  id: {
+    nav: { home: 'Beranda', services: 'Layanan', work: 'Proyek', blog: 'Blog', about: 'Tentang', contact: 'Kontak' },
+    switchTo: 'English',
+  },
+  en: {
+    nav: { home: 'Home', services: 'Services', work: 'Work', blog: 'Blog', about: 'About', contact: 'Contact' },
+    switchTo: 'Bahasa Indonesia',
+  },
+};
+
+const t = i18n[lang];
+const homeUrl = lang === 'id' ? '/' : '/en/';
+const here = Astro.url.pathname.replace(/\/index\.html$/, '');
+---
+
+<nav class="nav">
+  <div class="wrap nav__inner">
+    <a class="nav__brand" href={homeUrl}>AI Learn <span>Kun</span></a>
+
+    <ul class="nav__links">
+      {siteData.nav.map(item => {
+        const url = lang === 'id' ? item.url : item.urlEn;
+        const isActive = here === url;
+        return (
+          <li><a href={url} aria-current={isActive ? 'page' : undefined}>{t.nav[item.key]}</a></li>
+        );
+      })}
+    </ul>
+
+    <div class="nav__right">
+      <a class="lang-switch" href={altUrl} title={t.switchTo}>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <span>{t.switchTo}</span>
+      </a>
+      <button class="nav__toggle" type="button" aria-label="Menu" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="nav__mobile">
+    <ul>
+      {siteData.nav.map(item => {
+        const url = lang === 'id' ? item.url : item.urlEn;
+        return (
+          <li><a href={url}>{t.nav[item.key]}</a></li>
+        );
+      })}
+    </ul>
+  </div>
+</nav>
