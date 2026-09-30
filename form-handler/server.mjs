@@ -79,7 +79,10 @@ function verifySignature(payload, signature) {
 // Routes
 // ---------------------------------------------------------------------------
 const server = createServer(async (req, res) => {
-  const { method, url } = req;
+  const { method } = req;
+  // Route matching pakai pathname saja (tanpa query string) — Decap CMS
+  // mengirim query params sendiri ke auth endpoint, mis. /auth?provider=github
+  const url = new URL(req.url, `http://${req.headers.host}`).pathname;
 
   // CORS preflight
   if (method === "OPTIONS") {
