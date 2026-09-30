@@ -216,7 +216,7 @@ const server = createServer(async (req, res) => {
       });
 
       console.log("[deploy] Deploying to www...");
-      execSync(`rsync -a --delete ${SITE_DIR}/_site/ ${WWW_DIR}/`, { timeout: 30000 });
+      execSync(`rsync -a --delete ${SITE_DIR}/dist/ ${WWW_DIR}/`, { timeout: 30000 });
 
       console.log("[deploy] Done!");
       json(res, 200, { deployed: true, branch });
