@@ -3,6 +3,9 @@ backend:
   repo: ailearnkun/AILearningKun-site
   branch: master
   site_domain: ailearnkun.my.id
+  # OAuth proxy self-hosted di form handler (GET /auth -> GitHub -> GET /auth/callback)
+  base_url: "https://ailearnkun.my.id"
+  auth_endpoint: "auth"
 
 media_folder: "public/assets/img"
 public_folder: "/assets/img"

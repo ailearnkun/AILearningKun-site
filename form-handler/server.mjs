@@ -128,7 +128,7 @@ const server = createServer(async (req, res) => {
     const params = new URLSearchParams({
       client_id: oauthConfig.clientId,
       redirect_uri: oauthConfig.redirectUri,
-      scope: "user:email",
+      scope: "repo,user:email",
       state,
     });
     redirect(res, `https://github.com/login/oauth/authorize?${params}`);
